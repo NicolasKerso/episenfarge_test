@@ -1,4 +1,4 @@
-<?php
+<<?php
 session_start();
 include "connexion.php";
 
@@ -16,7 +16,7 @@ if(isset($_POST['username']) and isset($_POST['password']) and isset($_POST['ema
         if($_POST['fonction'] == "Patient" && isset($_POST['cin']) and isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['dateNaissance']) and isset($_POST['telephone']) and isset($_POST['adresse']) and isset($_POST['dateCreation']) and isset($_POST['sexe'])){
 
             // Préparer la requête d'insertion dans la table 'patient'
-            $queryPatient = $con->prepare("INSERT INTO `patient` (`CIN`, `Nom_Pat`, `Email`,`Prenom_Pat`, `DateNaissance`, `Telephone`, `Adresse`, `DateCreation`, `Sexe`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $queryPatient = $con->prepare("INSERT INTO patient (CIN, Nom_Pat, Email,Prenom_Pat, DateNaissance, Telephone, Adresse, DateCreation, Sexe) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $queryPatient->bind_param('sssssssss', $_POST['cin'], $_POST['nom'], $_POST['email'], $_POST['prenom'], $_POST['dateNaissance'], $_POST['telephone'], $_POST['adresse'], $_POST['dateCreation'], $_POST['sexe']);
 
             // Exécuter la requête
@@ -31,7 +31,7 @@ if(isset($_POST['username']) and isset($_POST['password']) and isset($_POST['ema
 
         // Préparer la requête d'insertion dans la table 'users'
         // Supposons que votre table 'users' ait une colonne 'Id_Pat' pour stocker l'ID du patient
-        $queryRegister = $con->prepare("INSERT INTO `users` (`UserName`, `Password`, `email`,`Specialite`,`FonctionL`, `Id_Pat`) VALUES (?, ?, ?, ?, ?, ?)");
+        $queryRegister = $con->prepare("INSERT INTO users (UserName, Password, email,Specialite,FonctionL, Id_Pat) VALUES (?, ?, ?, ?, ?, ?)");
         $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $queryRegister->bind_param('sssssi', $_POST['username'], $hashedPassword, $_POST['email'], $_POST['specialite'], $_POST['fonction'], $patientId);
 
@@ -148,61 +148,80 @@ if(isset($_POST['username']) and isset($_POST['password']) and isset($_POST['ema
     </style>
 </head>
 <body>
-<form method="POST" action="#">
-    <h2> INSCRIPTION </h2>
-    <label>Nom d'utilisateur</label>
-    <input type="text" placeholder="Utilisateur" id="username" name="username" required="required">
-    <label>Email</label>
-    <input type="email" placeholder="Email" id="email" name="email" required="required">
-    <label>Mot de passe</label>
-    <input type="password" placeholder="mot de passe" id="password" name="password" required="required">
-    <label>Spécialité</label>
-    <input type="text" placeholder="Spécialité" id="specialite" name="specialite">
+<form method="POST" action="process_inscription.php">
+    <h2>INSCRIPTION</h2>
     <label>Fonction</label>
-    <select name="fonction" id="fonction" required="required">
-        <option value="">Sélectionner</option>
+    <select name="fonction" id="fonction" required>
+        <option value="">Sélectionner la fonction</option>
         <option value="Patient">Patient</option>
         <option value="Medecin">Médecin</option>
-        <option value="Secretaire">Secrétaire</option>
     </select>
 
-    <div id="patientFields" style="display: none;">
-        <label>CIN</label>
-        <input type="text" placeholder="CIN" id="cin" name="cin">
-        <label>Nom</label>
-        <input type="text" placeholder="Nom" id="nom" name="nom">
-        <label>Prénom</label>
-        <input type="text" placeholder="Prénom" id="prenom" name="prenom">
-        <label>Date de naissance</label>
-        <input type="date" id="dateNaissance" name="dateNaissance">
-        <label>Téléphone</label>
-        <input type="tel" id="telephone" name="telephone">
-        <label>Adresse</label>
-        <input type="text" id="adresse" name="adresse">
-        <label>Date de création</label>
-        <input type="date" id="dateCreation" name="dateCreation">
-        <label>Sexe</label>
-        <select name="sexe" id="sexe">
-            <option value="">Sélectionner</option>
-            <option value="M">M</option>
-            <option value="F">F</option>
+    <!-- Champs spécifiques pour les patients -->
+    <div id="fieldsPatient" style="display: none;">
+        <input type="text" placeholder="Numéro de sécurité sociale" name="numSecu" required>
+        <input type="text" placeholder="Nom" name="nom" required>
+        <input type="text" placeholder="Prénom" name="prenom" required>
+        <label for="date">Date de naissance:</label>
+        <input type="date" placeholder="Date de naissance" name="dateNaissance" required>
+        <label for="Sexe">Sexe:</label>
+        <select name="Sexe" required>
+            <option value="">Sélectionner le sexe</option>
+            <option value="M">Homme</option>
+            <option value="F">Femme</option>
         </select>
+        <input type="text" placeholder="Adresse" name="adresse" required>
+        <input type="text" placeholder="Code Postal" name="codePostal" required>
+        <input type="text" placeholder="Ville" name="ville" required>
+        <input type="tel" placeholder="Téléphone" name="telephone" required>
+        <input type="email" placeholder="Adresse e-mail" name="email" required>
+        <input type="password" placeholder="Mot de passe" name="password" required>
+        <input type="password" placeholder="Confirmation du mot de passe" name="confirmPassword" required>
     </div>
 
-    <b><h3 style="color: red"><?php echo $message;?> </h3></b>
-    <input type="submit" value="s'inscrire">
-    <p>Vous avez déjà un compte ? <a href="Authentification.php">Connectez-vous ici.</a></p>
+    <!-- Champs spécifiques pour les médecins -->
+    <div id="fieldsMedecin" style="display: none;">
+        <!-- Champs communs -->
+        <input type="text" placeholder="Numéro CPS" name="numCPS" required>
+        <input type="text" placeholder="Nom" name="nomMedecin" required>
+        <input type="text" placeholder="Prénom" name="prenomMedecin" required>
+        <label for="dateNaissance">Date de naissance:</label>
+        <input type="date" id="dateNaissance" name="dateNaissance" required>
+        <label for="sexe">Sexe:</label>
+        <select name="sexe" id="sexe" required>
+            <option value="">Sélectionner le sexe</option>
+            <option value="M">Homme</option>
+            <option value="F">Femme</option>
+        </select>
+        <input type="text" placeholder="Adresse" name="adresseMedecin" required>
+        <input type="text" placeholder="Code Postal" name="codePostalMedecin" required>
+        <input type="text" placeholder="Ville" name="villeMedecin" required>
+        <input type="tel" placeholder="Téléphone" name="telephoneMedecin" required>
+        <input type="email" placeholder="Adresse e-mail" name="emailMedecin" required>
+        <input type="password" placeholder="Mot de passe" name="passwordMedecin" required>
+        <input type="password" placeholder="Confirmation du mot de passe" name="confirmPasswordMedecin" required>
+    </div>
+
+    <input type="submit" value="S'inscrire">
+    <p>Vous avez déjà un compte ? <a href="authentification.php">Connectez-vous ici.</a></p>
 </form>
 
 <script>
-    document.getElementById("fonction").addEventListener("change", function() {
-        if (this.value == "Patient") {
-            document.getElementById("patientFields").style.display = "block";
-        } else {
-            document.getElementById("patientFields").style.display = "none";
+    document.getElementById('fonction').addEventListener('change', function() {
+        var fieldsPatient = document.getElementById('fieldsPatient');
+        var fieldsMedecin = document.getElementById('fieldsMedecin');
+
+        // Cachez tous les champs au départ
+        fieldsPatient.style.display = 'none';
+        fieldsMedecin.style.display = 'none';
+
+        // Affichez les champs en fonction de la fonction sélectionnée
+        if (this.value === 'Patient') {
+            fieldsPatient.style.display = 'block';
+        } else if (this.value === 'Medecin') {
+            fieldsMedecin.style.display = 'block';
         }
     });
 </script>
-
 </body>
 </html>
