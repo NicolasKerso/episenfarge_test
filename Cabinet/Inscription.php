@@ -1,58 +1,68 @@
 <?php
 session_start();
-include "connexion.php";
+require "connexion.php"; // Changez ceci par le chemin correct vers votre script de connexion
 
-$message= "";
+$message = "";
 
-if(isset($_POST['username']) and isset($_POST['password']) and isset($_POST['email']) and isset($_POST['fonction']))
-{
-    // Commencer la transaction
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
     $con->begin_transaction();
 
     try {
-        $patientId = NULL;
-
-        // Si la fonction est 'Patient', insérer dans la table 'patient' d'abord
-        if($_POST['fonction'] == "Patient" && isset($_POST['cin']) and isset($_POST['nom']) and isset($_POST['prenom']) and isset($_POST['dateNaissance']) and isset($_POST['telephone']) and isset($_POST['adresse']) and isset($_POST['dateCreation']) and isset($_POST['sexe'])){
-
-            // Préparer la requête d'insertion dans la table 'patient'
-            $queryPatient = $con->prepare("INSERT INTO patient (CIN, Nom_Pat, Email,Prenom_Pat, DateNaissance, Telephone, Adresse, DateCreation, Sexe) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $queryPatient->bind_param('sssssssss', $_POST['cin'], $_POST['nom'], $_POST['email'], $_POST['prenom'], $_POST['dateNaissance'], $_POST['telephone'], $_POST['adresse'], $_POST['dateCreation'], $_POST['sexe']);
-
-            // Exécuter la requête
-            $queryPatient->execute();
-            if($queryPatient->error){
-                throw new Exception($queryPatient->error);
+        $requiredFields = $_POST['fonction'] == "Patient" ? 
+            ['numSecu', 'nom', 'prenom', 'dateNaissance', 'sexe', 'adresse', 'codePostal', 'ville', 'telephone', 'email', 'password', 'confirmPassword'] : 
+            ['numCPS', 'nomMedecin', 'prenomMedecin', 'dateNaissanceMedecin', 'sexeMedecin', 'adresseMedecin', 'codePostalMedecin', 'villeMedecin', 'telephoneMedecin', 'emailMedecin', 'passwordMedecin', 'confirmPasswordMedecin'];
+        
+        foreach ($requiredFields as $field) {
+            if (!isset($_POST[$field]) || empty($_POST[$field])) {
+                throw new Exception("Le champ $field est requis.");
             }
-
-            // Obtenir l'ID du patient inséré
-            $patientId = $con->insert_id;
         }
 
-        // Préparer la requête d'insertion dans la table 'users'
-        // Supposons que votre table 'users' ait une colonne 'Id_Pat' pour stocker l'ID du patient
-        $queryRegister = $con->prepare("INSERT INTO users (UserName, Password, email,Specialite,FonctionL, Id_Pat) VALUES (?, ?, ?, ?, ?, ?)");
-        $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $queryRegister->bind_param('sssssi', $_POST['username'], $hashedPassword, $_POST['email'], $_POST['specialite'], $_POST['fonction'], $patientId);
-
-        // Exécuter la requête
-        $queryRegister->execute();
-        if($queryRegister->error){
-            throw new Exception($queryRegister->error);
+        if ($_POST['fonction'] == "Patient" && $_POST['password'] !== $_POST['confirmPassword']) {
+            throw new Exception("Les mots de passe ne correspondent pas.");
+        } elseif ($_POST['fonction'] == "Medecin" && $_POST['passwordMedecin'] !== $_POST['confirmPasswordMedecin']) {
+            throw new Exception("Les mots de passe du médecin ne correspondent pas.");
         }
 
-        $_SESSION['Username']=$_POST['username'];
-        $_SESSION['Fonction']=$_POST['fonction'];
+        if ($_POST['fonction'] == "Patient") {
+            $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $stmt = $con->prepare("INSERT INTO patient (NumSecu, Nom, Prenom, DateNaissance, Sexe, Adresse, CodePostal, Ville, Telephone, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssssssssss", $_POST['numSecu'], $_POST['nom'], $_POST['prenom'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['adresse'], $_POST['codePostal'], $_POST['ville'], $_POST['telephone'], $_POST['email'], $hashedPassword);
+        } else {
+            $hashedPasswordMedecin = password_hash($_POST['passwordMedecin'], PASSWORD_DEFAULT);
+            $stmt = $con->prepare("INSERT INTO medecin (NumCPS, Nom, Prenom, DateNaissance, Sexe, Adresse, CodePostal, Ville, Telephone, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssssssssss", $_POST['numCPS'], $_POST['nomMedecin'], $_POST['prenomMedecin'], $_POST['dateNaissanceMedecin'], $_POST['sexeMedecin'], $_POST['adresseMedecin'], $_POST['codePostalMedecin'], $_POST['villeMedecin'], $_POST['telephoneMedecin'], $_POST['emailMedecin'], $hashedPasswordMedecin);
+        }
+
+
+        $stmt->execute();
+        if ($stmt->error) {
+            throw new Exception("Erreur lors de l'insertion : " . $stmt->error);
+        }
+
+
+        $userId = $con->insert_id;
 
         $con->commit();
-        header('Location: /Cabinet/Authentification.php');
 
-    } catch(Exception $e){
+
+        $_SESSION['userId'] = $userId;
+        $_SESSION['fonction'] = $_POST['fonction'];
+        header('Location: /Cabinet/Authentification.php');
+        exit();
+
+    } catch (Exception $e) {
+
         $con->rollback();
-        $message = "Il y a eu un problème avec votre inscription. Erreur : " . $e->getMessage();
+        $message = "Erreur d'inscription : " . $e->getMessage();
     }
 }
+
+if ($message) {
+    echo "<div class='error'>$message</div>";
+}
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -186,13 +196,13 @@ if(isset($_POST['username']) and isset($_POST['password']) and isset($_POST['ema
         <input type="text" placeholder="Nom" name="nomMedecin" required>
         <input type="text" placeholder="Prénom" name="prenomMedecin" required>
         <label for="dateNaissance">Date de naissance:</label>
-        <input type="date" id="dateNaissance" name="dateNaissance" required>
-        <label for="sexe">Sexe:</label>
-        <select name="sexe" id="sexe" required>
-            <option value="">Sélectionner le sexe</option>
-            <option value="M">Homme</option>
-            <option value="F">Femme</option>
-        </select>
+    <input type="date" id="dateNaissance" name="dateNaissance" required>
+    <label for="sexe">Sexe:</label>
+    <select name="sexe" id="sexe" required>
+        <option value="">Sélectionner le sexe</option>
+        <option value="M">Homme</option>
+        <option value="F">Femme</option>
+    </select>
         <input type="text" placeholder="Adresse" name="adresseMedecin" required>
         <input type="text" placeholder="Code Postal" name="codePostalMedecin" required>
         <input type="text" placeholder="Ville" name="villeMedecin" required>
