@@ -191,7 +191,7 @@ if(isset($_POST['username']) and isset($_POST['password']) and isset($_POST['ema
 
     <b><h3 style="color: red"><?php echo $message;?> </h3></b>
     <input type="submit" value="s'inscrire">
-    <p>Vous avez déjà un compte ? <a href="authentification.php">Connectez-vous ici.</a></p>
+    <p>Vous avez déjà un compte ? <a href="Authentification.php">Connectez-vous ici.</a></p>
 </form>
 
 <script>
