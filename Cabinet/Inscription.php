@@ -203,7 +203,7 @@ if(isset($_POST['username']) and isset($_POST['password']) and isset($_POST['ema
     </div>
 
     <input type="submit" value="S'inscrire">
-    <p>Vous avez déjà un compte ? <a href="authentification.php">Connectez-vous ici.</a></p>
+    <p>Vous avez déjà un compte ? <a href="Authentification.php">Connectez-vous ici.</a></p>
 </form>
 
 <script>
