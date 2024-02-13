@@ -1,6 +1,6 @@
 
 <?php
-$con = mysqli_connect("https://auth-db1048.hstgr.io/","u677866956_compte_test",";-k33vLYw:H9","u677866956_test");
+$con = mysqli_connect("localhost","root","","cabinet");
 $con->query("SET lc_time_names = 'fr_FR'");
 // Check connection
 if (mysqli_connect_errno())
