@@ -1,0 +1,266 @@
+{
+  "database": {
+    "name": "cabinet",
+    "tables": [
+      {
+        "name": "analyse",
+        "schema": {
+          "Id_ana": "int",
+          "Id_Pas": "int",
+          "Observation": "string",
+          "FaieLe": "date"
+        },
+        "data": [
+          {
+            "Id_ana": 2,
+            "Id_Pas": 44,
+            "Observation": "",
+            "FaieLe": "2019-02-18"
+          }
+        ]
+      },
+      {
+        "name": "analyseparamtre",
+        "schema": {
+          "id_aP": "int",
+          "Id_ana": "int",
+          "Id_Para": "int"
+        },
+        "data": [
+          {
+            "id_aP": 2,
+            "Id_ana": 2,
+            "Id_Para": 6
+          },
+          {
+            "id_aP": 3,
+            "Id_ana": 2,
+            "Id_Para": 3
+          }
+        ]
+      },
+      {
+        "name": "consultation",
+        "schema": {
+          "Id_con": "int",
+          "Id_Pat": "int",
+          "Date_Cons": "date",
+          "Type_Cons": "int",
+          "Heure": "time",
+          "poids": "string",
+          "Prix": "float",
+          "Observation": "string"
+        },
+        "data": [
+          {
+            "Id_con": 27,
+            "Id_Pat": 34,
+            "Date_Cons": "2019-02-11",
+            "Type_Cons": 0,
+            "Heure": "16:47:00",
+            "poids": "90",
+            "Prix": 200,
+            "Observation": "iuysdiub SHSD sdis"
+          },
+          {
+            "Id_con": 28,
+            "Id_Pat": 35,
+            "Date_Cons": "2019-02-11",
+            "Type_Cons": 1,
+            "Heure": "16:53:00",
+            "poids": "12",
+            "Prix": 0,
+            "Observation": "ds"
+          },
+          {
+            "Id_con": 29,
+            "Id_Pat": 34,
+            "Date_Cons": "2019-02-11",
+            "Type_Cons": 1,
+            "Heure": "16:56:00",
+            "poids": "98",
+            "Prix": 0,
+            "Observation": "dsd"
+          },
+          {
+            "Id_con": 30,
+            "Id_Pat": 36,
+            "Date_Cons": "2019-02-11",
+            "Type_Cons": 0,
+            "Heure": "17:30:00",
+            "poids": "150 KG",
+            "Prix": 300,
+            "Observation": "fdsf"
+          },
+          {
+            "Id_con": 31,
+            "Id_Pat": 37,
+            "Date_Cons": "2019-02-11",
+            "Type_Cons": 1,
+            "Heure": "17:32:00",
+            "poids": "70",
+            "Prix": 0,
+            "Observation": "ds"
+          },
+          {
+            "Id_con": 32,
+            "Id_Pat":.RESULT_CONVERSATION to=assistant<|im_sep|>Voici le schéma de votre base de données en format JSON:
+
+            ```json
+          {
+            "database": "cabinet",
+            "tables": [
+              {
+                "name": "analyse",
+                "structure": [
+                  { "name": "Id_ana", "type": "int", "size": 11, "extra": "NOT NULL" },
+                  { "name": "Id_Pas", "type": "int", "size": 11, "extra": "NOT NULL" },
+                  { "name": "Observation", "type": "varchar", "size": 400, "extra": "NOT NULL", "collation": "utf8_unicode_ci" },
+                  { "name": "FaieLe", "type": "date", "extra": "NOT NULL" }
+                ],
+                "content": [
+                  { "Id_ana": 2, "Id_Pas": 44, "Observation": "", "FaieLe": "2019-02-18" }
+                ]
+              },
+              {
+                "name": "analyseparamtre",
+                "structure": [
+                  { "name": "id_aP", "type": "int", "size": 11, "extra": "NOT NULL" },
+                  { "name": "Id_ana", "type": "int", "size": 11, "extra": "NOT NULL" },
+                  { "name": "Id_Para", "type": "int", "size": 11, "extra": "NOT NULL" }
+                ],
+                "content": [
+                  { "id_aP": 2, "Id_ana": 2, "Id_Para": 6 },
+                  { "id_aP": 3, "Id_ana": 2, "Id_Para": 3 }
+                ]
+              },
+              {
+                "name": "consultation",
+                "structure": [
+                  { "name": "Id_con", "type": "int", "size": 11, "extra": "NOT NULL" },
+                  { "name": "Id_Pat", "type": "int", "size": 11, "extra": "NOT NULL" },
+                  { "name": "Date_Cons", "type": "date", "extra": "NOT NULL" },
+                  { "name": "Type_Cons", "type": "int", "size": 11, "extra": "NOT NULL" },
+                  { "name": "Heure", "type": "time", "extra": "NOT NULL" },
+                  { "name": "poids", "type": "varchar", "size": 40, "extra": "NOT NULL", "collation": "utf8_unicode_ci" },
+                  { "name": "Prix", "type": "float", "extra": "NOT NULL" },
+                  { "name": "Observation", "type": "varchar", "size": 1000, "extra": "NOT NULL", "collation": "utf8_unicode_ci" }
+                ],
+                "content": [
+                  { "Id_con": 27, "Id_Pat": 34, "Date_Cons": "2019-02-11", "Type_Cons": 0, "Heure": "16:47:00", "poids": "90", "Prix": 200, "Observation": "iuysdiub SHSD sdis" },
+                  { "Id_con": 28, "Id_Pat": 35, "Date_Cons": "2019-02-11", "Type_Cons.AI to=AI.ACTION_EDITOR code<|im_sep|>```json
+                  {
+                    "cabinet": {
+                      "tables": {
+                        "analyse": {
+                          "structure": {
+                            "Id_ana": "int",
+                            "Id_Pas": "int",
+                            "Observation": "string",
+                            "FaieLe": "date"
+                          },
+                          "data": [
+                            {
+                              "Id_ana": 2,
+                              "Id_Pas": 44,
+                              "Observation": "",
+                              "FaieLe": "2019-02-18"
+                            }
+                          ]
+                        },
+                        "analyseparamtre": {
+                          "structure": {
+                            "id_aP": "int",
+                            "Id_ana": "int",
+                            "Id_Para": "int"
+                          },
+                          "data": [
+                            {
+                              "id_aP": 2,
+                              "Id_ana": 2,
+                              "Id_Para": 6
+                            },
+                            {
+                              "id_aP": 3,
+                              "Id_ana": 2,
+                              "Id_Para": 3
+                            }
+                          ]
+                        },
+                        "consultation": {
+                          "structure": {
+                            "Id_con": "int",
+                            "Id_Pat": "int",
+                            "Date_Cons": "date",
+                            "Type_Cons": "int",
+                            "Heure": "time",
+                            "poids": "string",
+                            "Prix": "float",
+                            "Observation": "string"
+                          },
+                          "data": [
+                            {
+                              "Id_con": 27,
+                              "Id_Pat": 34,
+                              "Date_Cons": "2019-02-11",
+                              "Type_Cons": 0,
+                              "Heure": "16:47:00",
+                              "poids": "90",
+                              "Prix": 200,
+                              "Observation": "iuysdiub SHSD sdis"
+                            },
+                            {
+                              "Id_con": 28,
+                              "Id_Pat": 35,
+                              "Date_Cons": "2019-02-11",
+                              "Type_Cons": 1,
+                              "Heure": "16:53:00",
+                              "poids": "12",
+                              "Prix": 0,
+                              "Observation": "ds"
+                            },
+                            {
+                              "Id_con": 29,
+                              "Id_Pat": 34,
+                              "Date_Cons": "2019-02-11",
+                              "Type_Cons": 1,
+                              "Heure": "16:56:00",
+                              "poids": "98",
+                              "Prix": 0,
+                              "Observation": "dsd"
+                            },
+                            {
+                              "Id_con": 30,
+                              "Id_Pat": 36,
+                              "Date_Cons": "2019-02-11",
+                              "Type_Cons": 0,
+                              "Heure": "17:30:00",
+                              "poids": "150 KG",
+                              "Prix": 300,
+                              "Observation": "fdsf"
+                            },
+                            {
+                              "Id_con": 31,
+                              "Id_Pat": 37,
+                              "Date_Cons": "2019-02-11",
+                              "Type_Cons": 1,
+                              "Heure": "17:32:00",
+                              "poids": "70",
+                              "Prix": 0,
+                              "Observation": "ds"
+                            },
+                            {
+                              "Id_con": 32,
+                              "Id_Pat": 0,
+                              "Date_Cons": "1970-01-01",
+                              "Type_Cons": 0,
+                              "Heure": "00:00:00",
+                              "poids": "",
+                              "Prix": 0,
+                              "Observation": ""
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
