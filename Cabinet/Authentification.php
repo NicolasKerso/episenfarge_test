@@ -6,16 +6,16 @@ if(isset($_POST['password']) and isset($_POST['username']))
 {
     include "connexion.php";
     if ($_POST['fonction']=="Secretaire"){
-        $queryAuth ="SELECT `NumSpé`,`Nom_Sec`,`Password` FROM `users`
+        $queryAuth ="SELECT `NumSpé`,`Nom_Sec`,`Password` FROM `secretaire`
      WHERE Nom_Sec = '" . htmlspecialchars(str_replace("'", "`", $_POST['username'])) . "' ";
     }
     if ($_POST['fonction']=="Patient"){
         $queryAuth ="SELECT `NumSecu`,`Nom_Pat`,`Password` FROM `patient`
-     WHERE Nom_Sec = '" . htmlspecialchars(str_replace("'", "`", $_POST['username'])) . "' ";
+     WHERE Nom_Pat = '" . htmlspecialchars(str_replace("'", "`", $_POST['username'])) . "' ";
     }
     if ($_POST['fonction']=="Medecin"){
         $queryAuth ="SELECT `NumCPS`,`Nom_Med`,`Password` FROM `medecin`
-     WHERE Nom_Sec = '" . htmlspecialchars(str_replace("'", "`", $_POST['username'])) . "' ";
+     WHERE Nom_Med = '" . htmlspecialchars(str_replace("'", "`", $_POST['username'])) . "' ";
     }
     $resultAth=mysqli_query($con,$queryAuth);
     $rowAuh = $resultAth->fetch_assoc();
