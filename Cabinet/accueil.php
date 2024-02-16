@@ -129,8 +129,8 @@ if(isset($_SESSION['id_user'])) {
                     </div>
                     <div class="icon-info">
                         <h4>Plus d'information sur le bracelet</h4>
-                        <a href="path/to/your/empty-file.txt" download="Document">
-                            <button style="cursor:pointer;">Télécharger le Document</button>
+                        <a href="images/Modedemploi.pdf" download="Document">
+                            <button style="cursor:pointer;">Télécharger le document</button>
                         </a>
                     </div>
                 </div>
