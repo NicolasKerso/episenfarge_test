@@ -6,7 +6,7 @@ session_start();
  <form id="form" data-parsley-validate="" novalidate="">
 <input type="hidden" id="idUser" value="<?php echo $_SESSION['id_user'];?>">
                   <div class="form-group row">
-                            <label for="Utilisateur" class="col-4 col-lg-4 col-form-label text-left">Utilisateur</label>
+                            <label for="Utilisateur" class="col-4 col-lg-4 col-form-label text-left">Utilisateur </label>
                            <div class="col-8 col-lg-8">
                        <input type="text" id="Utilisateur" value="<?php echo $_SESSION['Username'];?> "  class="form-control">
                                       </div>
@@ -14,7 +14,7 @@ session_start();
                           </div> 
 
                       <div class="form-group row">
-                            <label for="Password" class="col-4 col-lg-4 col-form-label text-left">Nouveau mot de passe</label>
+                            <label for="Password" class="col-4 col-lg-4 col-form-label text-left">Nouveau mot de passe  </label>
                            <div class="col-8 col-lg-8">
                        <input type="Password" id="Password" class="form-control"  value="">
                                       </div>
@@ -57,4 +57,4 @@ id_user=$("#idUser").val();
 
 
           	}
-          </script>
+          </script>                                            
