@@ -42,7 +42,7 @@
                                             <div class="col-8 col-lg-8">
                                               <select class="form-control" id="Specialite">
 
-                                              	<option>Choisez l Spécialité </option>
+                                              	<option>Choisissez la Spécialité </option>
                                                 <option >Médecin généraliste</option>
                                               	<option >Angiologue</option>
                                               	<option >Cardiologue</option>
@@ -69,7 +69,7 @@
 
          
   <div class="modal-footer">
-      <a href="#" class="btn btn-secondary" data-dismiss="modal">Anuller</a>
+      <a href="#" class="btn btn-secondary" data-dismiss="modal">Annuler</a>
       <a href="#" onclick="functionUpdateConsultation();" class="btn btn-primary">Enregistrer</a>
   </div>
 
