@@ -134,7 +134,7 @@ if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Medecin'){;?>
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ChanegPass">Chanegement de mot de passe </h5>
+                    <h5 class="modal-title" id="ChanegPass">Changement de mot de passe</h5>
                     <a href="#" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </a>
