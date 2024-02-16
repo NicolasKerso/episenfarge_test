@@ -91,7 +91,12 @@ if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Secretaire'){;?>
                                     Contrôle </a>
 
                             </li>
-                            
+
+                            <li class="nav-item ">
+                                <a class="nav-link active"  href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1">
+                                    <i class="fa fa-fw fa-user-circle"></i>Inscription </a>
+                            </li>
+
                             <li class="nav-item ">
                                 <a class="nav-link active"  href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1">
                                     <i class="fa fa-fw fa-user-circle"></i>Dossiers médicaux des patients </a>
