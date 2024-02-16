@@ -5,28 +5,38 @@ $message= "";
 if(isset($_POST['password']) and isset($_POST['username']))
 {
     include "connexion.php";
-    $queryAuth = "SELECT `Id_user`, `UserName`, `Password`, `Specialite`, `FonctionL`, `email` FROM `users`
-     WHERE UserName = '" . htmlspecialchars(str_replace("'", "`", $_POST['username'])) . "' 
-     AND FonctionL = '" . $_POST['fonction'] . "'";
-
+    if ($_POST['fonction']=="Secretaire"){
+        $queryAuth ="SELECT `NumSpé`,`Nom_Sec`,`Password` FROM `users`
+     WHERE Nom_Sec = '" . htmlspecialchars(str_replace("'", "`", $_POST['username'])) . "' ";
+    }
+    if ($_POST['fonction']=="Patient"){
+        $queryAuth ="SELECT `NumSecu`,`Nom_Pat`,`Password` FROM `patient`
+     WHERE Nom_Sec = '" . htmlspecialchars(str_replace("'", "`", $_POST['username'])) . "' ";
+    }
+    if ($_POST['fonction']=="Medecin"){
+        $queryAuth ="SELECT `NumCPS`,`Nom_Med`,`Password` FROM `medecin`
+     WHERE Nom_Sec = '" . htmlspecialchars(str_replace("'", "`", $_POST['username'])) . "' ";
+    }
     $resultAth=mysqli_query($con,$queryAuth);
     $rowAuh = $resultAth->fetch_assoc();
 
     if ($rowAuh && password_verify($_POST['password'], $rowAuh['Password'])) {
-        $_SESSION['id_user']=$rowAuh['Id_user'];
+        
         $_SESSION['Username']=$rowAuh['UserName'];
-        $_SESSION['Specialite']=$rowAuh['Specialite'];
-        $_SESSION['Fonction']=$rowAuh['FonctionL']; // Ici on ajoute la fonction à la session
+        $_SESSION['Fonction']=$_POST['fonction']; // Ici on ajoute la fonction à la session
 
 
         switch ($_SESSION['Fonction']) {
             case 'Patient':
+                $_SESSION['id_user']=$rowAuh['NumSecu'];
                 header('Location: /Cabinet/index.php');
                 exit;
             case 'Medecin':
+                $_SESSION['id_user']=$rowAuh['NumCPS'];
                 header('Location: /Cabinet/index1.php');
                 exit;
             case 'Secretaire':
+                $_SESSION['id_user']=$rowAuh['NumSpé'];
                 header('Location: /Cabinet/index2.php');
                 exit;
             default:
