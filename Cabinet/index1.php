@@ -77,32 +77,22 @@ if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Medecin'){;?>
                                 <div id="submenu-1" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" onclick="getPatient();" href="#">Patient</a>
+                                            <a class="nav-link" onclick="getPatient();" href="#" style="color: white;">Patient</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" onclick="getHistoPat();" href="#">Historique </a>
+                                            <a class="nav-link" onclick="getHistoPat();" href="#" style="color: white;">Historique </a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse"
-                                   onclick="functionGetAllConsultation();"
-                                   aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i> Consultations &
-                                    Contrôle </a>
-                            </li>
-                            <li class="nav-divider">
-                                <!-- Features-->
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="getordonnance();" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-fw fa-file"></i> Ordonnances</a>
-                            </li>
+
+
                             <li class="nav-item ">
-                                <a class="nav-link active"  href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-9" aria-controls="submenu-9"><i class="fa fa-fw fa-user-circle"></i>Rendez-vous </a>
+                                <a class="nav-link active"  href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-9" aria-controls="submenu-9" style="color: white;"><i class="fa fa-fw fa-user-circle"></i>Rendez-vous </a>
                                 <div id="submenu-9" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" onclick="getRDV();" href="#">Liste des rendez-vous</a>
+                                            <a class="nav-link" onclick="getRDV();" href="#" style="color: white;">Liste des rendez-vous</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -111,26 +101,20 @@ if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Medecin'){;?>
                             </li>
 
                             <li class="nav-item ">
-                                <a class="nav-link"  href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8"><i class="fas fa-ambulance"></i>analyse & radiologique</a>
+                                <a class="nav-link"  href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8" style="color: white;"><i class="fas fa-ambulance"></i>Analyse</a>
                                 <div id="submenu-8" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" onclick="patientAnalyse();" href="#">analyse & radiologique Patient </a>
+                                            <a class="nav-link" onclick="patientAnalyse();" href="#" style="color: white;">Analyse Patient</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#" onclick="parametrageanalyse();"  > Paramétrage d'analyse & radiologique</a>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" onclick="GetMedicament();" href="#"
-                                   data-toggle="collapse" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10">
-                                    <i class="fas fa-notes-medical"></i> Médicaments</a>
-                            </li>
+
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="Draccess();" data-toggle="collapse" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10"><i class="fas fa-f fa-folder" id="Convocation"></i> droits d’accès </a>
+                                <a class="nav-link" href="#" onclick="Draccess();" data-toggle="collapse" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10" style="color: white;"><i class="fas fa-f fa-folder" id="Convocation"></i> Droits d’accès </a>
                             </li>
 
                         </ul>
@@ -205,21 +189,12 @@ if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Medecin'){;?>
         {
             $("#AfficheAllhere").load("histoPat/histoPat.php");
         }
-        function  getordonnance()
-        {
-            $("#AfficheAllhere").load("ordonnance/ordonnance.php");
-        }
 
         function Draccess()
         {
             $("#AfficheAllhere").load("Access/Access.php");
         }
 
-
-        function parametrageanalyse()
-        {
-            $("#AfficheAllhere").load("panalyseRad/ParamAnalyse.php");
-        }
         function patientAnalyse()
         {
             $("#AfficheAllhere").load("analyse/analyse.php");
