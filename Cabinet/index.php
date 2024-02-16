@@ -96,11 +96,24 @@ if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Patient'){;?>
                                 </div>
                             </li>
 
-                            <li class="nav-divider">
-                                <!-- Features-->
+                            <li class="nav-item ">
+                                <a class="nav-link"  href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-8" aria-controls="submenu-8" style="color: white;"><i class="fas fa-ambulance"></i>Analyse</a>
+                                <div id="submenu-8" class="collapse submenu" style="">
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" onclick="patientAnalyse();" href="#">Analyse Patient</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
                             </li>
 
-
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" onclick="Draccess();" data-toggle="collapse" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10" style="color: white;"><i class="fas fa-f fa-folder" id="Convocation"></i> Prise de rendez-vous</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" onclick="Draccess();" data-toggle="collapse" aria-expanded="false" data-target="#submenu-10" aria-controls="submenu-10" style="color: white;"><i class="fas fa-f fa-folder" id="Convocation"></i> Historique des alertes </a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -188,6 +201,8 @@ function getPatient()
 		}
 
 
+
+        
 function functionGetImageBody()
     {
         $("#AfficheAllhere").load("body.php");
