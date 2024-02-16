@@ -124,30 +124,6 @@ if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Secretaire'){;?>
                                 <a class="nav-link" href="rendez_vous/"  ><i class="fas fa-fw fa-map-marker-alt" ></i> Rendez vous</a>
 
                             </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         </ul>
                     </div>
                 </nav>
