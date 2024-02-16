@@ -14,7 +14,7 @@ session_start();
                           </div> 
 
                       <div class="form-group row">
-                            <label for="Password" class="col-4 col-lg-4 col-form-label text-left">Nouveu Mot de passe  </label>
+                            <label for="Password" class="col-4 col-lg-4 col-form-label text-left">Nouveau Mot de passe  </label>
                            <div class="col-8 col-lg-8">
                        <input type="Password" id="Password" class="form-control"  value="">
                                       </div>
@@ -26,7 +26,7 @@ session_start();
 
          
   <div class="modal-footer">
-      <a href="#" class="btn btn-secondary" data-dismiss="modal">Anuller</a>
+      <a href="#" class="btn btn-secondary" data-dismiss="modal">Annuler</a>
       <a href="#" onclick="ChangePassr();" class="btn btn-primary">Enregistrer</a>
   </div>
 
