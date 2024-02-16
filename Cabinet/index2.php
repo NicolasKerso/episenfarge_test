@@ -83,6 +83,15 @@ if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Secretaire'){;?>
                                     </a>
                                 </b>
                             </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="collapse"
+                                   onclick="functionGetAllConsultation();"
+                                   aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i> Consultations &
+                                    Contrôle </a>
+
+                            </li>
+                            
                             <li class="nav-item ">
                                 <a class="nav-link active"  href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1">
                                     <i class="fa fa-fw fa-user-circle"></i>Dossiers médicaux des patients </a>
@@ -109,6 +118,7 @@ if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Secretaire'){;?>
                                     Contrôle </a>
 
                             </li>
+
 
 
                             <li class="nav-divider">
