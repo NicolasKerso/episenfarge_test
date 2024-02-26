@@ -34,11 +34,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
 
         $userId = $con->insert_id;
 
-        $con->commit();
+        
 
 
-        $_SESSION['userId'] = $userId;
+        $_SESSION['userId'] = $_POST['numSecu'];
         $_SESSION['fonction'] = $_POST['fonction'];
+        // Exécutez cette requête après l'insertion de l'utilisateur dans la table users
+        $queryUpdateFirstLogin = $con->prepare("UPDATE users SET first_login = 1 FROM patient WHERE NumSecu = ?");
+        $queryUpdateFirstLogin->bind_param('s', $_POST['numSecu']);
+        $queryUpdateFirstLogin->execute();
+        $con->commit();
+        
         header('Location: /Cabinet/Authentification.php');
         exit();
 
