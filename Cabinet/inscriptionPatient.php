@@ -9,8 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
 
     try {
         $requiredFields = $_POST['fonction'] == "Patient" ? 
-            ['numSecu', 'nom', 'prenom', 'dateNaissance', 'sexe', 'adresse', 'codePostal', 'ville', 'telephone', 'email', 'password', 'confirmPassword'] : 
-            ['numSecu', 'nom', 'prenom', 'dateNaissance', 'sexe', 'adresse', 'codePostal', 'ville', 'telephone', 'email', 'password', 'confirmPassword'];        
+            ['numSecu', 'nom', 'prenom', 'dateNaissance', 'sexe', 'adresse', 'codePostal', 'ville', 'telephone', 'email', 'password', 'confirmPassword', 'numerobracelet'] : 
+            ['numSecu', 'nom', 'prenom', 'dateNaissance', 'sexe', 'adresse', 'codePostal', 'ville', 'telephone', 'email', 'password', 'confirmPassword', 'numerobracelet'];        
         foreach ($requiredFields as $field) {
             if (!isset($_POST[$field]) || empty($_POST[$field])) {
                 throw new Exception("Le champ $field est requis.");
@@ -22,8 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
         } 
         if ($_POST['fonction'] == "Patient") {
             $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $stmt = $con->prepare("INSERT INTO patient (NumSecu, Nom, Prenom, DateNaissance, Sexe, Adresse, CodePostal, Ville, Telephone, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssssssssss", $_POST['numSecu'], $_POST['nom'], $_POST['prenom'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['adresse'], $_POST['codePostal'], $_POST['ville'], $_POST['telephone'], $_POST['email'], $hashedPassword);
+            $stmt = $con->prepare("INSERT INTO patient (NumSecu, Nom, Prenom, DateNaissance, Sexe, Adresse, CodePostal, Ville, Telephone, Email, numerobracelet, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssssssssss", $_POST['numSecu'], $_POST['nom'], $_POST['prenom'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['adresse'], $_POST['codePostal'], $_POST['ville'], $_POST['telephone'], $_POST['email'], $_POST['numerobracelet'] $hashedPassword);
         }
       
         $stmt->execute();
@@ -180,6 +180,7 @@ if ($message) {
         <input type="email" placeholder="Adresse e-mail" name="email" required>
         <input type="password" placeholder="Mot de passe" name="password" required>
         <input type="password" placeholder="Confirmation du mot de passe" name="confirmPassword" required>
+        <input type="numerobracelet" placeholder="Numéro du Bracelet" name="numerobracelet" required>
     </div>
     <div>
         <input type="submit" value="S'inscrire"/>
