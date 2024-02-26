@@ -157,7 +157,7 @@ if ($message) {
     </div>
     <div display: none>
         <select name="fonction" id="fonction" required>
-        <option value="Patient">Patient</option>
+        
         </select> 
     </div>
 
