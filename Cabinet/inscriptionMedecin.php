@@ -152,11 +152,11 @@ if ($message) {
 <body>
 <form method="POST" action="process_inscription.php">
     <h2>INSCRIPTION</h2>
-    <label>Fonction : Patient</label>
+    <label>Fonction : Medecin</label>
     <div>
         <a href="Inscription.php"> Retour </a>
     </div>
-    <div>
+    <div display: none>
         <select name="fonction" id="fonction" required>
         <option value="Medecin">Medecin</option>
         </select> 
