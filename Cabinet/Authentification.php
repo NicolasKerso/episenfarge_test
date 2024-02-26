@@ -37,7 +37,7 @@ if(isset($_POST['password']) and isset($_POST['username']))
                 exit;
             case 'Secretaire':
                 $_SESSION['id_user']=$rowAuh['NumSpé'];
-                header('Location: /Cabinet/index2.php');
+                header('Location: /index2.php');
                 exit;
             default:
                 $message = "Fonction invalide";
