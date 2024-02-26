@@ -151,10 +151,14 @@ if ($message) {
 <body>
 <form method="POST" action="process_inscription.php">
     <h2>INSCRIPTION</h2>
-    <label>Fonction :</label>
-    <label name="fonction" value="Patient"/>
+    <label>Fonction : Patient</label>
     <div>
         <a href="Inscription.php"> Retour </a>
+    </div>
+    <div>
+        <select name="fonction" id="fonction" required>
+        <option value="Patient">Patient</option>
+        </select> 
     </div>
 
     <!-- Champs spécifiques pour les patients -->
