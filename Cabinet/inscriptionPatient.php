@@ -169,12 +169,10 @@ if ($message) {
         <label for="date">Date de naissance:</label>
         <input type="date" placeholder="Date de naissance" name="dateNaissance" required>
         <label for="Sexe">Sexe:</label>
-        <div>
-            <input type="radio" id="Homme" name="sexe" value="H" checked />
-            <p for="Homme">Homme</p>
-            <input type="radio" id="Femme" name="sexe" value="F" />
-            <p for="Femme">Femme</p>
-        </div>
+        <select name="Sexe" required>
+            <option value="M">Homme</option>
+            <option value="F">Femme</option>
+        </select>
         <input type="text" placeholder="Adresse" name="adresse" >
         <input type="text" placeholder="Code Postal" name="codePostal" >
         <input type="text" placeholder="Ville" name="ville" >
