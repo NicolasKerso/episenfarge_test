@@ -149,7 +149,7 @@ if ($message) {
     </style>
 </head>
 <body>
-<form method="POST" action="index2.php">
+<form method="POST">
     <h2>INSCRIPTION</h2>
     <label>Fonction : Patient</label>
     <div>
