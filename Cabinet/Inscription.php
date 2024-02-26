@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "connexion.php"; // Changez ceci par le chemin correct vers votre script de connexion
+require "connexion.php";
 
 $message = "";
 
@@ -155,6 +155,38 @@ if ($message) {
         a:hover{
             background: #8fd3f4;
         }
+                .small-input {
+        font-size: 14px; 
+        padding: 8px; 
+        }
+        .top-button {
+        margin-top: -20px;
+        text-align: center;
+        width: 100%;
+        }
+        .button, .back-button {
+            float: right;
+            background: #72e99f;
+            padding: 10px 15px;
+            color: #fff;
+            border-radius: 15px;
+            margin-right: 10px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none; /* Ajout pour le style du lien comme un bouton */
+            transition: background 0.5s;
+        }
+        .back-button:hover, .button:hover {
+            background: #8fd3f4;
+        }
+        .form-action-buttons {
+            overflow: hidden; /* Pour que le flottement des boutons ne perturbe pas le layout extérieur */
+            display: block; /* Assure que le conteneur prend toute la largeur */
+        }
+        .small-input {
+        font-size: 14px; 
+        padding: 8px; 
+        }
     </style>
 </head>
 <body>
@@ -217,16 +249,19 @@ if ($message) {
     <div>
         <input type="submit" value="S'inscrire"/>
     </div>
+    <div>
+        <input type="submit" value="S'inscrire"/>
+        <a href="index2.php" class="back-button">Retour</a
+    </div>
 </form>
 
 <script>
     document.getElementById('fonction').addEventListener('change', function() {
-        // Redirigez l'utilisateur en fonction de la sélection
         var selectedOption = this.value;
         if (selectedOption === 'Patient') {
-            window.location.href = 'inscriptionPatient.php'; // URL pour les patients
+            window.location.href = 'inscriptionPatient.php'; 
         } else if (selectedOption === 'Medecin') {
-            window.location.href = 'inscriptionMedecin.php'; // URL pour les médecins
+            window.location.href = 'inscriptionMedecin.php'; 
         }
     });
 </script>
