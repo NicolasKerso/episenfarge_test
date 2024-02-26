@@ -203,9 +203,9 @@ if ($message) {
         <option value="M">Homme</option>
         <option value="F">Femme</option>
     </select>
-        <input type="text" placeholder="Adresse" name="adresseMedecin" required>
-        <input type="text" placeholder="Code Postal" name="codePostalMedecin" required>
-        <input type="text" placeholder="Ville" name="villeMedecin" required>
+        <input type="text" placeholder="Adresse" name="adresseMedecin" >
+        <input type="text" placeholder="Code Postal" name="codePostalMedecin" >
+        <input type="text" placeholder="Ville" name="villeMedecin" >
         <input type="tel" placeholder="Téléphone" name="telephoneMedecin" required>
         <input type="email" placeholder="Adresse e-mail" name="emailMedecin" required>
         <input type="password" placeholder="Mot de passe" name="passwordMedecin" required>
