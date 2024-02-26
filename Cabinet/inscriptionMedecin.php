@@ -153,9 +153,6 @@ if ($message) {
 <form method="POST" action="process_inscription.php">
     <h2>INSCRIPTION</h2>
     <label>Fonction : Medecin</label>
-    <div>
-        <a href="Inscription.php"> Retour </a>
-    </div>
     <div display: none>
         <select name="fonction" id="fonction" required>
         <option value="Medecin">Medecin</option>
@@ -184,6 +181,7 @@ if ($message) {
     </div>
     <div>
         <input type="submit" value="S'inscrire"/>
+        <a href="Inscription.php" class="back-button">Retour</a
     </div>
 </form>
 
