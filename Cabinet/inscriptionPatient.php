@@ -170,7 +170,7 @@ if ($message) {
         <input type="text" placeholder="Numéro de sécurité sociale" name="numSecu" required>
         <input type="text" placeholder="Nom" name="nom" required>
         <input type="text" placeholder="Prénom" name="prenom" required>
-        <label for="date">Date de naissance:</label>
+        <label for="date" class="small-input">Date de naissance:</label>
         <input type="date" placeholder="Date de naissance" name="dateNaissance" required class="small-input">
         <label for="Sexe" class="small-input">Sexe:</label>
         <select name="sexe" required class="small-input">
