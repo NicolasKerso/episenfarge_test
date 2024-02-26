@@ -250,7 +250,6 @@ if ($message) {
         <input type="submit" value="S'inscrire"/>
     </div>
     <div>
-        <input type="submit" value="S'inscrire"/>
         <a href="index2.php" class="back-button">Retour</a
     </div>
 </form>
