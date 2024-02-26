@@ -151,7 +151,8 @@ if ($message) {
 <body>
 <form method="POST" action="process_inscription.php">
     <h2>INSCRIPTION</h2>
-    <label>Fonction : Patient</label>
+    <label>Fonction :</label>
+    <label name="fonction" value="Patient"/>
     <div>
         <a href="Inscription.php"> Retour </a>
     </div>
