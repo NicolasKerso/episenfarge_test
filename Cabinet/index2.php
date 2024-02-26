@@ -87,6 +87,7 @@ if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Secretaire'){;?>
                             <li class="nav-item ">
                                 <a class="nav-link active"  href="Inscription.php" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1">
                                     <i class="fa fa-fw fa-user-circle" href="Inscription.php"></i>Inscription </a>
+                                <a class="nav-link" href="Inscription.php"  ><i class="fas fa-fw fa-map-marker-alt" ></i> Inscription</a>
                             </li>
 
                             <li class="nav-item">
