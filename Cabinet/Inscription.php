@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
     $con->begin_transaction();
 
     try {
-        $requiredFields = $_POST['fonction'] == "Patient" ? 
+        $requiredFields = $_POST['fonction'] == "Medecin" ? 
             ['numSecu', 'nom', 'prenom', 'dateNaissance', 'sexe', 'adresse', 'codePostal', 'ville', 'telephone', 'email', 'password', 'confirmPassword'] : 
             ['numCPS', 'nomMedecin', 'prenomMedecin', 'dateNaissanceMedecin', 'sexeMedecin', 'adresseMedecin', 'codePostalMedecin', 'villeMedecin', 'telephoneMedecin', 'emailMedecin', 'passwordMedecin', 'confirmPasswordMedecin'];
         
