@@ -215,9 +215,6 @@ if ($message) {
         <input type="password" placeholder="Confirmation du mot de passe" name="confirmPasswordMedecin" required>
     </div>
     <div>
-        <a href="inscriptionMedecin.php">Medecin</a>
-    </div>
-    <div>
         <input type="submit" value="S'inscrire"/>
     </div>
     <p>Vous avez déjà un compte ? <a href="Authentification.php">Connectez-vous ici.</a></p>
