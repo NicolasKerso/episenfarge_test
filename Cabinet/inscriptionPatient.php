@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
         
         $con->commit();
         
-        header('Location: /Cabinet/Authentification.php');
+        header('Location: Authentification.php');
         exit();
 
     } catch (Exception $e) {
