@@ -154,6 +154,7 @@ if ($message) {
         display: block;
         margin-top: 20px;
         }
+        
     </style>
 </head>
 <body>
