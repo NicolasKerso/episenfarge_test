@@ -180,9 +180,6 @@ if ($message) {
 <form method="POST" action="process_inscription.php">
     <h2>INSCRIPTION</h2>
     <label>Fonction : Patient</label>
-    <div class="top-button">
-        <a href="Inscription.php"> Retour </a>
-    </div>
 
     <!-- Champs spécifiques pour les patients -->
     <div id="fieldsPatient" style="display: block;">
