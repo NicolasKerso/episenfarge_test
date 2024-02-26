@@ -178,6 +178,10 @@ if ($message) {
             overflow: hidden; /* Pour que le flottement des boutons ne perturbe pas le layout extérieur */
             display: block; /* Assure que le conteneur prend toute la largeur */
         }
+        .small-input {
+        font-size: 14px; 
+        padding: 8px; 
+        }
     </style>
 </head>
 <body>
@@ -190,10 +194,10 @@ if ($message) {
         <input type="text" placeholder="Numéro de CPS" name="numCPS" required>
         <input type="text" placeholder="Nom" name="nomMedecin" required>
         <input type="text" placeholder="Prénom" name="prenomMedecin" required>
-        <label for="date">Date de naissance:</label>
-        <input type="date" placeholder="Date de naissance" name="dateNaissanceMedecin" required>
-        <label for="Sexe">Sexe:</label>
-        <select name="sexeMedecin" required>
+        <label for="date" class="small-input">Date de naissance:</label>
+        <input type="date" placeholder="Date de naissance" name="dateNaissance" required class="small-input">
+        <label for="Sexe" class="small-input">Sexe:</label>
+        <select name="sexe" required class="small-input">
             <option value="M">Homme</option>
             <option value="F">Femme</option>
         </select>
