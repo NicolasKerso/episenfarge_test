@@ -226,18 +226,12 @@ if ($message) {
 
 <script>
     document.getElementById('fonction').addEventListener('change', function() {
-        var fieldsPatient = document.getElementById('fieldsPatient');
-        var fieldsMedecin = document.getElementById('fieldsMedecin');
-
-        // Cachez tous les champs au départ
-        fieldsPatient.style.display = 'none';
-        fieldsMedecin.style.display = 'none';
-
-        // Affichez les champs en fonction de la fonction sélectionnée
-        if (this.value === 'Patient') {
-            fieldsPatient.style.display = 'block';
-        } else if (this.value === 'Medecin') {
-            fieldsMedecin.style.display = 'block';
+        // Redirigez l'utilisateur en fonction de la sélection
+        var selectedOption = this.value;
+        if (selectedOption === 'Patient') {
+            window.location.href = 'inscriptionPatient.php'; // URL pour les patients
+        } else if (selectedOption === 'Medecin') {
+            window.location.href = 'inscriptionMedecin.php'; // URL pour les médecins
         }
     });
 </script>
