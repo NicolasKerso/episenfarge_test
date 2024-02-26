@@ -155,7 +155,25 @@ if ($message) {
         text-align: center;
         width: 100%;
         }
-        
+        .button, .back-button {
+            float: right;
+            background: #72e99f;
+            padding: 10px 15px;
+            color: #fff;
+            border-radius: 15px;
+            margin-right: 10px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none; /* Ajout pour le style du lien comme un bouton */
+            transition: background 0.5s;
+        }
+        .back-button:hover, .button:hover {
+            background: #8fd3f4;
+        }
+        .form-action-buttons {
+            overflow: hidden; /* Pour que le flottement des boutons ne perturbe pas le layout extérieur */
+            display: block; /* Assure que le conteneur prend toute la largeur */
+        }
     </style>
 </head>
 <body>
@@ -187,8 +205,9 @@ if ($message) {
         <input type="password" placeholder="Confirmation du mot de passe" name="confirmPassword" required>
         <input type="numerobracelet" placeholder="Numéro du Bracelet" name="numerobracelet" required>
     </div>
-    <div>
+    <div class="form-action-buttons">
         <input type="submit" value="S'inscrire"/>
+        <a href="Inscription.php" class="back-button">Retour</a
     </div>
     <p>Vous avez déjà un compte ? <a href="Authentification.php">Connectez-vous ici.</a></p>
 </form>
