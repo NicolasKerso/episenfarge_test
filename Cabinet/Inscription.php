@@ -9,8 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
 
     try {
         $requiredFields = $_POST['fonction'] == "Medecin" ? 
-            ['numSecu', 'nom', 'prenom', 'dateNaissance', 'sexe', 'adresse', 'codePostal', 'ville', 'telephone', 'email', 'password', 'confirmPassword'] : 
-            ['numCPS', 'nomMedecin', 'prenomMedecin', 'dateNaissanceMedecin', 'sexeMedecin', 'adresseMedecin', 'codePostalMedecin', 'villeMedecin', 'telephoneMedecin', 'emailMedecin', 'passwordMedecin', 'confirmPasswordMedecin'];
+            ['Numero', 'nom', 'prenom', 'dateNaissance', 'sexe', 'telephone', 'email', 'password', 'confirmPassword'] : 
+            ['Numero', 'nom', 'prenom', 'dateNaissance', 'sexe', 'telephone', 'email', 'password', 'confirmPassword'];
         
         foreach ($requiredFields as $field) {
             if (!isset($_POST[$field]) || empty($_POST[$field])) {
@@ -27,11 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
         if ($_POST['fonction'] == "Patient") {
             $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $stmt = $con->prepare("INSERT INTO patient (NumSecu, Nom, Prenom, DateNaissance, Sexe, Adresse, CodePostal, Ville, Telephone, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssssssssss", $_POST['numSecu'], $_POST['nom'], $_POST['prenom'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['adresse'], $_POST['codePostal'], $_POST['ville'], $_POST['telephone'], $_POST['email'], $hashedPassword);
+            $stmt->bind_param("sssssssssss", $_POST['Numero'], $_POST['nom'], $_POST['prenom'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['adresse'], $_POST['codePostal'], $_POST['ville'], $_POST['telephone'], $_POST['email'], $hashedPassword);
         } else {
             $hashedPasswordMedecin = password_hash($_POST['passwordMedecin'], PASSWORD_DEFAULT);
             $stmt = $con->prepare("INSERT INTO medecin (NumCPS, Nom, Prenom, DateNaissance, Sexe, Adresse, CodePostal, Ville, Telephone, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssssssssss", $_POST['numCPS'], $_POST['nomMedecin'], $_POST['prenomMedecin'], $_POST['dateNaissanceMedecin'], $_POST['sexeMedecin'], $_POST['adresseMedecin'], $_POST['codePostalMedecin'], $_POST['villeMedecin'], $_POST['telephoneMedecin'], $_POST['emailMedecin'], $hashedPasswordMedecin);
+            $stmt->bind_param("sssssssssss", $_POST['Numero'], $_POST['nom'], $_POST['prenom'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['adresse'], $_POST['codePostal'], $_POST['ville'], $_POST['telephone'], $_POST['email'], $hashedPassword);
         }
 
 
@@ -171,7 +171,7 @@ if ($message) {
 
     <!-- Champs spécifiques pour les patients -->
     <div id="fieldsPatient" style="display: none;">
-        <input type="text" placeholder="Numéro de sécurité sociale" name="numSecu" required>
+        <input type="text" placeholder="Numéro de sécurité sociale" name="Numero" required>
         <input type="text" placeholder="Nom" name="nom" required>
         <input type="text" placeholder="Prénom" name="prenom" required>
         <label for="date">Date de naissance:</label>
@@ -194,9 +194,9 @@ if ($message) {
     <!-- Champs spécifiques pour les médecins -->
     <div id="fieldsMedecin" style="display: none;">
         <!-- Champs communs -->
-        <input type="text" placeholder="Numéro CPS" name="numCPS" required>
-        <input type="text" placeholder="Nom" name="nomMedecin" required>
-        <input type="text" placeholder="Prénom" name="prenomMedecin" required>
+        <input type="text" placeholder="Numéro CPS" name="Numero" required>
+        <input type="text" placeholder="Nom" name="nom" required>
+        <input type="text" placeholder="Prénom" name="prenom" required>
         <label for="dateNaissance">Date de naissance:</label>
     <input type="date" id="dateNaissance" name="dateNaissance" required>
     <label for="sexe">Sexe:</label>
@@ -205,13 +205,13 @@ if ($message) {
         <option value="M">Homme</option>
         <option value="F">Femme</option>
     </select>
-        <input type="text" placeholder="Adresse" name="adresseMedecin" >
-        <input type="text" placeholder="Code Postal" name="codePostalMedecin" >
-        <input type="text" placeholder="Ville" name="villeMedecin" >
-        <input type="tel" placeholder="Téléphone" name="telephoneMedecin" required>
-        <input type="email" placeholder="Adresse e-mail" name="emailMedecin" required>
-        <input type="password" placeholder="Mot de passe" name="passwordMedecin" required>
-        <input type="password" placeholder="Confirmation du mot de passe" name="confirmPasswordMedecin" required>
+        <input type="text" placeholder="Adresse" name="adresse" >
+        <input type="text" placeholder="Code Postal" name="codePostal" >
+        <input type="text" placeholder="Ville" name="ville" >
+        <input type="tel" placeholder="Téléphone" name="telephone" required>
+        <input type="email" placeholder="Adresse e-mail" name="email" required>
+        <input type="password" placeholder="Mot de passe" name="password" required>
+        <input type="password" placeholder="Confirmation du mot de passe" name="confirmPassword" required>
     </div>
     <div>
         <input type="submit" value="S'inscrire"/>
