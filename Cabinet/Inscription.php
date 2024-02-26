@@ -161,11 +161,13 @@ if ($message) {
 <form method="POST" action="process_inscription.php">
     <h2>INSCRIPTION</h2>
     <label>Fonction</label>
-    <select name="fonction" id="fonction" required>
+    <div>
+      <select name="fonction" id="fonction" required>
         <option value="">Sélectionner la fonction</option>
         <option value="Patient">Patient</option>
         <option value="Medecin">Médecin</option>
-    </select>
+        </select>  
+    </div>
 
     <!-- Champs spécifiques pour les patients -->
     <div id="fieldsPatient" style="display: none;">
@@ -180,9 +182,9 @@ if ($message) {
             <option value="M">Homme</option>
             <option value="F">Femme</option>
         </select>
-        <input type="text" placeholder="Adresse" name="adresse" required>
-        <input type="text" placeholder="Code Postal" name="codePostal" required>
-        <input type="text" placeholder="Ville" name="ville" required>
+        <input type="text" placeholder="Adresse" name="adresse" >
+        <input type="text" placeholder="Code Postal" name="codePostal" >
+        <input type="text" placeholder="Ville" name="ville" >
         <input type="tel" placeholder="Téléphone" name="telephone" required>
         <input type="email" placeholder="Adresse e-mail" name="email" required>
         <input type="password" placeholder="Mot de passe" name="password" required>
