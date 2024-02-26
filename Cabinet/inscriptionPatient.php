@@ -151,17 +151,13 @@ if ($message) {
 <body>
 <form method="POST" action="process_inscription.php">
     <h2>INSCRIPTION</h2>
-    <label>Fonction</label>
+    <label>Fonction : Patient</label>
     <div>
-      <select name="fonction" id="fonction" required>
-        <option value="">Sélectionner la fonction</option>
-        <option value="Patient">Patient</option>
-        <option value="Medecin">Médecin</option>
-        </select>  
+        <a href="Inscription.php"> Retour </a>
     </div>
 
     <!-- Champs spécifiques pour les patients -->
-    <div id="fieldsPatient" style="display: none;">
+    <div id="fieldsPatient" style="display: block;">
         <input type="text" placeholder="Numéro de sécurité sociale" name="numSecu" required>
         <input type="text" placeholder="Nom" name="nom" required>
         <input type="text" placeholder="Prénom" name="prenom" required>
@@ -187,18 +183,5 @@ if ($message) {
     <p>Vous avez déjà un compte ? <a href="Authentification.php">Connectez-vous ici.</a></p>
 </form>
 
-<script>
-    document.getElementById('fonction').addEventListener('change', function() {
-        var fieldsPatient = document.getElementById('fieldsPatient');
-        var fieldsMedecin = document.getElementById('fieldsMedecin');
-
-        // Cachez tous les champs au départ
-        fieldsPatient.style.display = 'block';
-        fieldsMedecin.style.display = 'none';
-
-        // Affichez les champs en fonction de la fonction sélectionnée
-        
-    });
-</script>
 </body>
 </html>
