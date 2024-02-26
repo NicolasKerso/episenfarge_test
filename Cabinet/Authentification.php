@@ -29,11 +29,11 @@ if(isset($_POST['password']) and isset($_POST['username']))
         switch ($_SESSION['Fonction']) {
             case 'Patient':
                 $_SESSION['id_user']=$rowAuh['NumSecu'];
-                header('Location: /Cabinet/index.php');
+                header('Location: index.php');
                 exit;
             case 'Medecin':
                 $_SESSION['id_user']=$rowAuh['NumCPS'];
-                header('Location: /Cabinet/index1.php');
+                header('Location: index1.php');
                 exit;
             case 'Secretaire':
                 $_SESSION['id_user']=$rowAuh['NumSpé'];
