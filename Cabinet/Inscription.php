@@ -164,9 +164,12 @@ if ($message) {
     <div>
       <select name="fonction" id="fonction" required>
         <option value="">Sélectionner la fonction</option>
-        <option href="inscriptionPatient.php" value="Patient">Patient</option>
+        <option value="Patient">Patient</option>
         <option value="Medecin">Médecin</option>
         </select>  
+    </div>
+    <div>
+        <a href="inscriptionPatient.php">Patient</a>
     </div>
 
     <!-- Champs spécifiques pour les patients -->
