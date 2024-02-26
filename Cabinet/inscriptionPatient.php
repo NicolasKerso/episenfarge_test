@@ -161,7 +161,7 @@ if ($message) {
 <form method="POST" action="process_inscription.php">
     <h2>INSCRIPTION</h2>
     <label>Fonction : Patient</label>
-    <div>
+    <div class="top-button">
         <a href="Inscription.php"> Retour </a>
     </div>
 
