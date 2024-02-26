@@ -151,8 +151,9 @@ if ($message) {
         padding: 8px; 
         }
         .top-button {
-        display: block;
         margin-top: -20px;
+        text-align: center;
+        width: 100%;
         }
         
     </style>
