@@ -216,6 +216,7 @@ if ($message) {
     </div>
     <div>
         <a href="inscriptionPatient.php">Patient</a>
+        <a href="inscriptionMedecin.php">Medecin</a>
     </div>
     <div>
         <input type="submit" value="S'inscrire"/>
