@@ -1,5 +1,5 @@
 <?php session_start();
-if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Patient' && $_SESSION['numSecu'] = $user['numSecu']){;?>
+if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Patient'){;?>
 <!doctype html>
 <html lang="en">
  
@@ -33,8 +33,7 @@ if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Patient' && $_SESSI
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
                  <a class="navbar-brand" style="color: #0f7d7f;" href="#">Bonjour <?php echo $_SESSION['Username'];?>
                 : <?php echo $_SESSION['Fonction'];?> </a>
-		<a class="navbar-brand" style="color: #0f7d7f;" href="#">Bonjour <?php echo $_SESSION['numSecu'];?>: <?php echo $_SESSION['Fonction'];?> </a>
-
+	
                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
