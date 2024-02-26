@@ -247,7 +247,7 @@ if ($message) {
         <input type="password" placeholder="Confirmation du mot de passe" name="confirmPasswordMedecin" required>
     </div>
     <div>
-        <input type="submit" value="S'inscrire"/>
+        <input type="submit" value="Inscription"/>
     </div>
     <div>
         <a href="index2.php" class="back-button">Retour</a
