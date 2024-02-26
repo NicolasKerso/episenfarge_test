@@ -193,15 +193,11 @@ if ($message) {
         var fieldsMedecin = document.getElementById('fieldsMedecin');
 
         // Cachez tous les champs au départ
-        fieldsPatient.style.display = 'none';
+        fieldsPatient.style.display = 'block';
         fieldsMedecin.style.display = 'none';
 
         // Affichez les champs en fonction de la fonction sélectionnée
-        if (this.value === 'Patient') {
-            fieldsPatient.style.display = 'block';
-        } else if (this.value === 'Medecin') {
-            fieldsMedecin.style.display = 'block';
-        }
+        
     });
 </script>
 </body>
