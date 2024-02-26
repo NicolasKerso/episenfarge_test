@@ -171,9 +171,9 @@ if ($message) {
         <label for="Sexe">Sexe:</label>
         <div>
             <input type="radio" id="Homme" name="sexe" value="H" checked />
-            <label for="Homme">Homme</label>
+            <p for="Homme">Homme</p>
             <input type="radio" id="Femme" name="sexe" value="F" />
-            <label for="Femme">Femme</label>
+            <p for="Femme">Femme</p>
         </div>
         <input type="text" placeholder="Adresse" name="adresse" >
         <input type="text" placeholder="Code Postal" name="codePostal" >
