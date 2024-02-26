@@ -7,15 +7,15 @@ if(isset($_POST['password']) and isset($_POST['username']))
     include "connexion.php";
     if ($_POST['fonction']=="Secretaire"){
         $queryAuth ="SELECT `NumSpé`,`Nom_Sec`,`Password` FROM `secretaire`
-     WHERE Nom_Sec = '" . htmlspecialchars(str_replace("'", "`", $_POST['username'])) . "' ";
+     WHERE NumSpé = '" . htmlspecialchars(str_replace("'", "`", $_POST['username'])) . "' ";
     }
     if ($_POST['fonction']=="Patient"){
         $queryAuth ="SELECT `NumSecu`,`Nom_Pat`,`Password` FROM `patient`
-     WHERE Nom_Pat = '" . htmlspecialchars(str_replace("'", "`", $_POST['username'])) . "' ";
+     WHERE NumSecu = '" . htmlspecialchars(str_replace("'", "`", $_POST['username'])) . "' ";
     }
     if ($_POST['fonction']=="Medecin"){
         $queryAuth ="SELECT `NumCPS`,`Nom_Med`,`Password` FROM `medecin`
-     WHERE Nom_Med = '" . htmlspecialchars(str_replace("'", "`", $_POST['username'])) . "' ";
+     WHERE NumCPS = '" . htmlspecialchars(str_replace("'", "`", $_POST['username'])) . "' ";
     }
     $resultAth=mysqli_query($con,$queryAuth);
     $rowAuh = $resultAth->fetch_assoc();
@@ -248,7 +248,7 @@ if(isset($_POST['password']) and isset($_POST['username']))
 
 <form method="POST" action="#" id="verification_form">
     <h2> LOGIN </h2>
-    <label>Nom d'utilisateur</label>
+    <label>Numéro de sécurité / Numéro de CPS</label>
     <input type="text" placeholder="Utilisateur" id="username" name="username" required="required">
     <label>Mot de passe</label>
     <input type="password" placeholder="mot de passe" id="password" name="password" required="required">  <b><h3 style="color: red"><?php echo $message;?> </h3></b>
