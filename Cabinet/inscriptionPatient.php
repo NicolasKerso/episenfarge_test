@@ -146,6 +146,14 @@ if ($message) {
         a:hover{
             background: #8fd3f4;
         }
+        .small-input {
+        font-size: 14px; 
+        padding: 8px; 
+        }
+        .top-button {
+        display: block;
+        margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -162,9 +170,9 @@ if ($message) {
         <input type="text" placeholder="Nom" name="nom" required>
         <input type="text" placeholder="Prénom" name="prenom" required>
         <label for="date">Date de naissance:</label>
-        <input type="date" placeholder="Date de naissance" name="dateNaissance" required>
-        <label for="Sexe">Sexe:</label>
-        <select name="sexe" required>
+        <input type="date" placeholder="Date de naissance" name="dateNaissance" required class="small-input">
+        <label for="Sexe" class="small-input">Sexe:</label>
+        <select name="sexe" required class="small-input">
             <option value="M">Homme</option>
             <option value="F">Femme</option>
         </select>
