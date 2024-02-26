@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
 
         $userId = $con->insert_id;
 
-        
+        $con->commit();
 
 
         $_SESSION['userId'] = $_POST['numSecu'];
