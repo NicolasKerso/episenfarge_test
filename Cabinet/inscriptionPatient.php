@@ -206,7 +206,7 @@ if ($message) {
         <input type="email" placeholder="Adresse e-mail" name="email" required>
         <input type="password" placeholder="Mot de passe" name="password" required>
         <input type="password" placeholder="Confirmation du mot de passe" name="confirmPassword" required>
-        <input type="numerobracelet" placeholder="Numéro du Bracelet" name="numerobracelet" required>
+        <input type="text" placeholder="Numéro du Bracelet" name="numerobracelet" required>
     </div>
     <div class="form-action-buttons">
         <input type="submit" value="S'inscrire"/>
