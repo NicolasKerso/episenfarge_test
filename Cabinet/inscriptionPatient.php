@@ -37,8 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
         $con->commit();
 
 
-        $_SESSION['userId'] = $userId;
+        $_SESSION['userId'] = $_POST['numSecu'];
         $_SESSION['fonction'] = $_POST['fonction'];
+        
+        $con->commit();
+        
         header('Location: /Cabinet/Authentification.php');
         exit();
 
@@ -179,7 +182,8 @@ if ($message) {
 <body>
 <form method="POST" action="process_inscription.php">
     <h2>INSCRIPTION</h2>
-    <label>Fonction : Patient</label>
+    <label name="fonction" value="Patient">Fonction : Patient</label>
+    
 
     <!-- Champs spécifiques pour les patients -->
     <div id="fieldsPatient" style="display: block;">
