@@ -213,6 +213,7 @@ if ($message) {
     </div>
     <div>
         <input type="submit" value="S'inscrire"/>
+        <button>S'inscrire</button>
     </div>
     <p>Vous avez déjà un compte ? <a href="Authentification.php">Connectez-vous ici.</a></p>
 </form>
