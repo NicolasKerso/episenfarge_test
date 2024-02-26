@@ -155,11 +155,6 @@ if ($message) {
     <div>
         <a href="Inscription.php"> Retour </a>
     </div>
-    <div display: none>
-        <select name="fonction" id="fonction" required>
-        
-        </select> 
-    </div>
 
     <!-- Champs spécifiques pour les patients -->
     <div id="fieldsPatient" style="display: block;">
