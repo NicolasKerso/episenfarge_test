@@ -206,7 +206,6 @@ if ($message) {
         <input type="submit" value="S'inscrire"/>
         <a href="Inscription.php" class="back-button">Retour</a
     </div>
-    <p>Vous avez déjà un compte ? <a href="Authentification.php">Connectez-vous ici.</a></p>
 </form>
 
 </body>
