@@ -31,8 +31,9 @@ if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Secretaire'){;?>
     <div class="dashboard-main-wrapper">
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="#">Bonjour <?php echo $_SESSION['Username'];?>
-                    : <?php echo $_SESSION['Specialite'];?> </a>
+                <a class="navbar-brand" href="#">Bonjour <?php echo $_SESSION['Username'];?> : 
+    <?php echo isset($_SESSION['Specialite']) ? $_SESSION['Specialite'] : "Spécialité non définie"; ?> </a>
+
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
