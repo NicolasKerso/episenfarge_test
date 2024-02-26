@@ -217,7 +217,6 @@ if ($message) {
     <div>
         <input type="submit" value="S'inscrire"/>
     </div>
-    <p>Vous avez déjà un compte ? <a href="Authentification.php">Connectez-vous ici.</a></p>
 </form>
 
 <script>
