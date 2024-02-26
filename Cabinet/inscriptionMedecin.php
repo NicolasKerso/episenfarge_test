@@ -187,8 +187,10 @@ if ($message) {
 <body>
 <form method="POST" action="process_inscription.php">
     <h2>INSCRIPTION</h2>
-    <label>Fonction : Medecin</label>
-
+    <label>Fonction : </label>
+    <select name="fonction" id="fonction" required>
+        <option value="Medecin">Medecin</option>
+    </select> 
     <!-- Champs spécifiques pour les patients -->
     <div id="fieldsPatient" style="display: block;">
         <input type="text" placeholder="Numéro de CPS" name="numCPS" required>
