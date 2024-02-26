@@ -242,7 +242,7 @@ if ($message) {
 
 
 <body>
-    <p>Vous etes bien inscrit! <a href="authentification.php">Inscrivez-vous ici.</a></p>
+    <p>Vous etes bien inscrit! <a href="Authentification.php">Inscrivez-vous ici.</a></p>
     
 </body>
 </html>
