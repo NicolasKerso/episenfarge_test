@@ -182,8 +182,10 @@ if ($message) {
 <body>
 <form method="POST" action="process_inscription.php">
     <h2>INSCRIPTION</h2>
-    <label name="fonction" value="Patient">Fonction : Patient</label>
-    
+    <label>Fonction : Patient</label>
+    <select name="fonction" id="fonction" required>
+        <option value="Patient">Patient</option>
+    </select> 
 
     <!-- Champs spécifiques pour les patients -->
     <div id="fieldsPatient" style="display: block;">
