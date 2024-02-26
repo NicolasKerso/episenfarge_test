@@ -9,8 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
 
     try {
         $requiredFields = $_POST['fonction'] == "Patient" ? 
-            ['numSecu', 'nom', 'prenom', 'dateNaissance', 'sexe', 'adresse', 'codePostal', 'ville', 'telephone', 'email', 'password', 'confirmPassword'] : 
-            ['numSecu', 'nom', 'prenom', 'dateNaissance', 'sexe', 'adresse', 'codePostal', 'ville', 'telephone', 'email', 'password', 'confirmPassword'];        
+            ['numSecu', 'nom', 'prenom', 'dateNaissance', 'sexe', 'adresse', 'codePostal', 'ville', 'telephone', 'email', 'password', 'confirmPassword', 'numerobracelet'] : 
+            ['numSecu', 'nom', 'prenom', 'dateNaissance', 'sexe', 'adresse', 'codePostal', 'ville', 'telephone', 'email', 'password', 'confirmPassword', 'numerobracelet'];        
         foreach ($requiredFields as $field) {
             if (!isset($_POST[$field]) || empty($_POST[$field])) {
                 throw new Exception("Le champ $field est requis.");
@@ -22,8 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
         } 
         if ($_POST['fonction'] == "Patient") {
             $hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $stmt = $con->prepare("INSERT INTO patient (NumSecu, Nom, Prenom, DateNaissance, Sexe, Adresse, CodePostal, Ville, Telephone, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssssssssss", $_POST['numSecu'], $_POST['nom'], $_POST['prenom'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['adresse'], $_POST['codePostal'], $_POST['ville'], $_POST['telephone'], $_POST['email'], $hashedPassword);
+            $stmt = $con->prepare("INSERT INTO patient (NumSecu, Nom, Prenom, DateNaissance, Sexe, Adresse, CodePostal, Ville, Telephone, Email, numerobracelet, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssssssssss", $_POST['numSecu'], $_POST['nom'], $_POST['prenom'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['adresse'], $_POST['codePostal'], $_POST['ville'], $_POST['telephone'], $_POST['email'], $_POST['numerobracelet'], $hashedPassword);
         }
       
         $stmt->execute();
@@ -146,30 +146,50 @@ if ($message) {
         a:hover{
             background: #8fd3f4;
         }
+        .small-input {
+        font-size: 14px; 
+        padding: 8px; 
+        }
+        .top-button {
+        margin-top: -20px;
+        text-align: center;
+        width: 100%;
+        }
+        .button, .back-button {
+            float: right;
+            background: #72e99f;
+            padding: 10px 15px;
+            color: #fff;
+            border-radius: 15px;
+            margin-right: 10px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none; /* Ajout pour le style du lien comme un bouton */
+            transition: background 0.5s;
+        }
+        .back-button:hover, .button:hover {
+            background: #8fd3f4;
+        }
+        .form-action-buttons {
+            overflow: hidden; /* Pour que le flottement des boutons ne perturbe pas le layout extérieur */
+            display: block; /* Assure que le conteneur prend toute la largeur */
+        }
     </style>
 </head>
 <body>
 <form method="POST" action="process_inscription.php">
     <h2>INSCRIPTION</h2>
     <label>Fonction : Patient</label>
-    <div>
-        <a href="Inscription.php"> Retour </a>
-    </div>
-    <div>
-        <select name="fonction" id="fonction" required>
-        <option value="Patient">Patient</option>
-        </select> 
-    </div>
 
     <!-- Champs spécifiques pour les patients -->
     <div id="fieldsPatient" style="display: block;">
         <input type="text" placeholder="Numéro de sécurité sociale" name="numSecu" required>
         <input type="text" placeholder="Nom" name="nom" required>
         <input type="text" placeholder="Prénom" name="prenom" required>
-        <label for="date">Date de naissance:</label>
-        <input type="date" placeholder="Date de naissance" name="dateNaissance" required>
-        <label for="Sexe">Sexe:</label>
-        <select name="sexe" required>
+        <label for="date" class="small-input">Date de naissance:</label>
+        <input type="date" placeholder="Date de naissance" name="dateNaissance" required class="small-input">
+        <label for="Sexe" class="small-input">Sexe:</label>
+        <select name="sexe" required class="small-input">
             <option value="M">Homme</option>
             <option value="F">Femme</option>
         </select>
@@ -180,9 +200,11 @@ if ($message) {
         <input type="email" placeholder="Adresse e-mail" name="email" required>
         <input type="password" placeholder="Mot de passe" name="password" required>
         <input type="password" placeholder="Confirmation du mot de passe" name="confirmPassword" required>
+        <input type="numerobracelet" placeholder="Numéro du Bracelet" name="numerobracelet" required>
     </div>
-    <div>
+    <div class="form-action-buttons">
         <input type="submit" value="S'inscrire"/>
+        <a href="Inscription.php" class="back-button">Retour</a
     </div>
 </form>
 
