@@ -168,9 +168,7 @@ if ($message) {
         <option value="Medecin">Médecin</option>
         </select>  
     </div>
-    <div>
-        <a href="inscriptionPatient.php">Patient</a>
-    </div>
+    
 
     <!-- Champs spécifiques pour les patients -->
     <div id="fieldsPatient" style="display: none;">
@@ -215,6 +213,9 @@ if ($message) {
         <input type="email" placeholder="Adresse e-mail" name="emailMedecin" required>
         <input type="password" placeholder="Mot de passe" name="passwordMedecin" required>
         <input type="password" placeholder="Confirmation du mot de passe" name="confirmPasswordMedecin" required>
+    </div>
+    <div>
+        <a href="inscriptionPatient.php">Patient</a>
     </div>
     <div>
         <input type="submit" value="S'inscrire"/>
