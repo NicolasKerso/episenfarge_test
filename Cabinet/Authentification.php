@@ -260,7 +260,7 @@ if(isset($_POST['password']) and isset($_POST['username']))
         <option value="Secretaire">Secrétaire</option>
     </select>
     <input type="submit" value="se connecter">
-    <p>Vous n'avez pas de compte ? <a href="Inscription.php">Inscrivez-vous ici.</a></p>
+    
 
 
 </form>
