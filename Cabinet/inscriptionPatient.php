@@ -64,7 +64,7 @@ if ($message) {
 
 if (isset($_POST['btn'])){
     envoiMail($_POST['email'], $_POST['prenom']);
-    header("location:/Cabinet/Authentification.php");
+    header("location: Authentification.php");
  }//if
 
 function envoiMail($destinationAddress, $destinationName){   
