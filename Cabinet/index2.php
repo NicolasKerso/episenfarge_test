@@ -30,7 +30,7 @@ if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Secretaire'){;?>
     <body onload="functionGetImageBody();">
     <div class="dashboard-main-wrapper">
         <div class="dashboard-header">
-            <nav class="navbar navbar-expand-lg bg-white fixed-top">
+            <nav class="navbar navbar-expand-lg fixed-top" style="background-color: rgb(75, 157, 160);">
                 <a class="navbar-brand" href="#"><img src="img/logo1.png" class="img-responsive" style="width: 140px; margin-top: -16px;"></a>
 
 
