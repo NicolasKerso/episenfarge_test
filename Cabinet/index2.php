@@ -70,7 +70,7 @@ if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Secretaire'){;?>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav flex-column">
                             <li class="nav-divider">
-                                <b style="color: white"> Nom Cabinet
+                                <b style="color: white"> Medilab
                                     <a title="Username-less login" class="modalC"  href="AjouterPatient.php" >
 
                                     </a>
