@@ -28,9 +28,8 @@ if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Medecin'){;?>
     <body onload="functionGetImageBody();">
     <div class="dashboard-main-wrapper">
         <div class="dashboard-header">
-            <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="#">Dr <?php echo $_SESSION['Username'];?>
-                    : <?php echo $_SESSION['Specialite'];?> </a>
+            <nav class="navbar navbar-expand-lg fixed-top" style="background-color: rgb(75, 157, 160);">
+                <a class="navbar-brand" href="#"><img src="img/logo.png" class="img-responsive" style="width: 140px; margin-top: -16px;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
