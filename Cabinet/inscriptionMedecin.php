@@ -32,7 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
             throw new Exception("Erreur lors de l'insertion : " . $stmt->error);
         }
 
-
+        $queryUpdateFirstLogin = $con->prepare("UPDATE Medecin SET first_login = 1 WHERE NumCPS = ?");
+        $queryUpdateFirstLogin->bind_param('s', $_POST['numCPS']);
+        $queryUpdateFirstLogin->execute();
         $userId = $con->insert_id;
 
         $con->commit();
@@ -40,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
 
         $_SESSION['userId'] = $userId;
         $_SESSION['fonction'] = $_POST['fonction'];
+        
         header('Location: /Cabinet/Authentification.php');
         exit();
 
@@ -58,7 +61,7 @@ if ($message) {
 <?php
 
 if (isset($_POST['btn'])){
-    envoiMail($_POST['email'], $_POST['prenomMedecin']);
+    envoiMail($_POST['emailMedecin'], $_POST['prenomMedecin']);
     header("location:Authentification.php");
  }//if
 
