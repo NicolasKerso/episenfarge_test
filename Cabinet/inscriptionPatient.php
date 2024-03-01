@@ -175,7 +175,7 @@ if ($message) {
     </style>
 </head>
 <body>
-<form method="POST" action="">
+<form method="POST" action="process_inscription.php">
     <h2>INSCRIPTION</h2>
     <select name="fonction" id="fonction" required>
         <option value="Patient">Patient</option>
