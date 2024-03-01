@@ -1,10 +1,10 @@
 <?php
 if (session_id() == '') session_start(); 
-if (isset($_SESSION['NumSecu']) == false) {
+if (isset($_SESSION['Username']) == false) {
     header("location: Authentification.php");
     exit();
 } 
-$userName = $_SESSION['NumSecu'];
+$userName = $_SESSION['Username'];
 $erreur = "";
 if (isset($_POST['btn']) == true) {
     $ancienpassword = $_POST['ancienpassword'];
@@ -237,7 +237,7 @@ if (isset($_POST['btn']) == true) {
     </h3></b>
     <h2> CHANGEMENT DU MOT DE PASSE </h2>
     <label>Nom d'utilisateur</label>
-    <input type="text" value="<?php echo $_SESSION['NumSecu'];?>" id="username" name="username" required="required" disabled>
+    <input type="text" value="<?php echo $_SESSION['Username'];?>" id="username" name="username" required="required" disabled>
     <label>Ancien mot de passe</label>
     <input value="<?php if(isset($ancienpassword) == true) echo $ancienpassword; ?>" type="password" placeholder="Ancien mot de passe" id="ancienpassword" name="ancienpassword" required="required">  
     <label>Nouveau mot de passe</label>
