@@ -67,9 +67,11 @@ if ($message) {
 <?php
 if ($_POST['fonction'] == "Patient"){
     $Num=$_POST['numSecu'];
+    
 }else{
     $Num=$_POST['numCPS'];
 }
+echo $Num
 // if (isset($_POST['btn'])){
 //     envoiMail($_POST['email'], $_POST['prenom']);
 //     header("location:Authentification.php");
