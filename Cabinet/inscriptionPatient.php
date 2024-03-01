@@ -202,7 +202,7 @@ if ($message) {
         <input type="text" placeholder="Numéro du Bracelet" name="numerobracelet" required>
     </div>
     <div class="form-action-buttons">
-        <button type="submit">S'inscrire</button>
+        <button href="index2.php" type="submit">S'inscrire</button>
         <a href="Inscription.php" class="back-button">Retour</a
     </div>
 </form>
