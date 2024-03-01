@@ -9,16 +9,10 @@
                                     <table class="table table-striped table-bordered first">
                                         <thead>
                                             <tr>
-                                                <th>CIN</th>
+                                                <th>Numéro Sécurité Sociale</th>
                                                 <th>Nom </th>
                                                 <th>Prenom</th>
-                                                <th>opération</th>
-                                                
-                                                <th>Date opération </th>
-                                                <th> Poinds </th>
-                                                <th> Prix </th>
-                                                <th> Observation </th>
-                                                
+                                                <th>Numéro bracelet</th>
                                                 <th style="text-align: center;">Action</th>
                                             </tr>
                                         </thead>
