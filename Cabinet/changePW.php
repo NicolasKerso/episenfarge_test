@@ -11,7 +11,7 @@ if (isset($_POST['btn']) == true) {
     $nouveaupassword = $_POST['nouveaupassword'];
     $confirnouveaupassword = $_POST['confirnouveaupassword'];
 
-    $conn = new PDO("mysql:host=localhost;dbname=cabinet;charset=utf8", "root", "");
+    $conn = new PDO("mysql:host=localhost;dbname=u677866956_test;charset=utf8", "u677866956_compte_test", ";-k33vLYw:H9");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO:: ERRMODE_EXCEPTION);
     $sql ="SELECT * FROM users WHERE UserName = ?";
     $stmt = $conn->prepare($sql); 
