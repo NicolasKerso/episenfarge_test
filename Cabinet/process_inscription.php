@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
         } 
         if ($_POST['fonction'] == "Medecin") {
             $hashedPasswordMedecin = password_hash($_POST['passwordMedecin'], PASSWORD_DEFAULT);
-            $stmt = $con->prepare("INSERT INTO medecin (NumCPS, Nom, Prenom, DateNaissance, Sexe, Adresse, CodePostal, Ville, Telephone, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt = $con->prepare("INSERT INTO medecin (NumCPS, Nom_Med, Prenom_Med, DateNaissance, Sexe, Adresse, CodePostal, Ville, Telephone, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("sssssssssss", $_POST['numCPS'], $_POST['nom'], $_POST['prenom'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['adresse'], $_POST['codePostal'], $_POST['ville'], $_POST['telephone'], $_POST['email'], $hashedPassword);
         }
       
@@ -71,7 +71,7 @@ if ($message) {
 //     header("location:Authentification.php");
 //  }//if
 
-envoiMail($_POST['email'], $_POST['prenom']);
+envoiMail($_POST['Email'], $_POST['nom']);
 //header("location:Authentification.php");
 
 function envoiMail($destinationAddress, $destinationName){   
