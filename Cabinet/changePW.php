@@ -1,10 +1,10 @@
 <?php
 if (session_id() == '') session_start(); 
-if (isset($_SESSION['Username']) == false) {
+if (isset($_SESSION['NumSecu']) == false) {
     header("location: Authentification.php");
     exit();
 } 
-$userName = $_SESSION['Username'];
+$userName = $_SESSION['NumSecu'];
 $erreur = "";
 if (isset($_POST['btn']) == true) {
     $ancienpassword = $_POST['ancienpassword'];
