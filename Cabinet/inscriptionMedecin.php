@@ -241,7 +241,7 @@ function envoiMail($destinationAddress, $destinationName){
     </style>
 </head>
 <body>
-<form method="POST" action="index2.php">
+<form method="POST" action="process_inscription.php">
     <h2>INSCRIPTION</h2>
     <label>Fonction : </label>
     <select name="fonction" id="fonction" required>
@@ -272,15 +272,5 @@ function envoiMail($destinationAddress, $destinationName){
         <a href="Inscription.php" class="back-button">Retour</a
     </div>
 </form>
-    
-    <script>
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            alert("Inscription réussie ! Vous allez être redirigé.");
-            window.location.href = 'index2.php';
-        }
-        document.querySelector('form').addEventListener('submit', handleFormSubmit);
-    </script>
-
 </body>
 </html>
