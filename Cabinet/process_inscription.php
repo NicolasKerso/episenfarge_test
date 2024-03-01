@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
         $_SESSION['userId'] = $userId;
         $_SESSION['fonction'] = "Secretaire";
         header('Location: index2.php');
-        exit();
+        //exit();
 
     } catch (Exception $e) {
 
@@ -75,7 +75,7 @@ if ($message) {
 //  }//if
 
 envoiMail($_POST['email'], $_POST['prenom']);
-header("location:Authentification.php");
+//header("location:Authentification.php");
 
 function envoiMail($destinationAddress, $destinationName){   
     require "PHPMailer-master/src/PHPMailer.php"; 
