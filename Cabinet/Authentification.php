@@ -29,7 +29,6 @@ if(isset($_POST['password']) and isset($_POST['username']))
             exit;
         }
         else {
-
             switch ($_SESSION['Fonction']) {
                 case 'Patient':
                     $_SESSION['id_user']=$rowAuh['NumSecu'];
