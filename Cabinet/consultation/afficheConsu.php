@@ -25,7 +25,7 @@
 
 
 include "../connexion.php";
-$queryC=" SELECT `NumSecu`,`Nom_Pat`,`Prenom_Pat`,`numerobracelet` FROM patient WHERE NumSecu = "$_SESSION['numSecu'];
+$queryC=" SELECT `NumSecu`,`Nom_Pat`,`Prenom_Pat`,`numerobracelet` FROM patient WHERE NumSecu = "$_SESSION['id_user'];
 if(isset($_GET['Cin_Con']) and $_GET['Cin_Con']!="")
 {
   $queryC .=" and  CIN like'%".$_GET['Cin_Con']."%'";
