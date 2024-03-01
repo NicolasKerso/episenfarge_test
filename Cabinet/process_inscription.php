@@ -18,11 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
             $stmt->bind_param("ssssssssssss", $_POST['numSecu'], $_POST['nom'], $_POST['prenom'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['adresse'], $_POST['codePostal'], $_POST['ville'], $_POST['telephone'], $_POST['email'], $hashedPassword, $_POST['numerobracelet']);
         }
         
-        if ($_POST['fonction'] == "Medecin" && $_POST['passwordMedecin'] !== $_POST['confirmPasswordMedecin']) {
+        if ($_POST['fonction'] == "Medecin" && $_POST['password'] !== $_POST['confirmPassword']) {
             throw new Exception("Les mots de passe ne correspondent pas.");
         } 
         if ($_POST['fonction'] == "Medecin") {
-            $hashedPasswordMedecin = password_hash($_POST['passwordMedecin'], PASSWORD_DEFAULT);
+            $hashedPasswordMedecin = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $stmt = $con->prepare("INSERT INTO medecin (NumCPS, Nom_Med, Prenom_Med, DateNaissance, Sexe, Adresse, CodePostal, Ville, Telephone, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("sssssssssss", $_POST['numCPS'], $_POST['nom'], $_POST['prenom'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['adresse'], $_POST['codePostal'], $_POST['ville'], $_POST['telephone'], $_POST['email'], $hashedPassword);
         }
@@ -98,7 +98,10 @@ function envoiMail($destinationAddress, $destinationName){
         <p>Vous venez d'être inscrit sur le site Medilab !!!<br></p>
         <p>Le lien ci-dessous vous permet de vous connecter au site web :<br></p>
         <p>Lien: <a href='https://episenfarge.ddns.net/test/Cabinet/Authentification.php'>https://episenfarge.ddns.net/test/Cabinet/Authentification.php</a><br></p>
-        <p>Votre identifiant : {$_POST['numSecu']} {$_POST['numCPS']}<br></p>
+        <p>Votre identifiant : <?php 
+            if ($_POST['fonction'] == "Patient") {
+                {$_POST['numSecu']}   
+                } else {{$_POST['numCPS']}} ?><br></p>
         <p>Votre mot de passe provisoire : {$_POST['password']}<br></p>
         <p>Après votre connexion, veuillez vous rendre dans l'onglet 'Modification de mot de passe' pour procéder au changement de mot de passe.<br></p>
         <p>Bien cordialement,<br></p>
