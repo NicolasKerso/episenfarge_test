@@ -69,10 +69,12 @@ if ($message) {
 
 <?php
 
-if (isset($_POST['btn'])){
-    envoiMail($_POST['email'], $_POST['prenom']);
-    header("location:Authentification.php");
- }//if
+// if (isset($_POST['btn'])){
+//     envoiMail($_POST['email'], $_POST['prenom']);
+//     header("location:Authentification.php");
+//  }//if
+
+envoiMail($_POST['email'], $_POST['prenom']);
 
 function envoiMail($destinationAddress, $destinationName){   
     require "PHPMailer-master/src/PHPMailer.php"; 
