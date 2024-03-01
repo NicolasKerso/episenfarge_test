@@ -39,11 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
 
         $_SESSION['userId'] = $_POST['numSecu'];
         $_SESSION['fonction'] = $_POST['fonction'];
-        // Exécutez cette requête après l'insertion de l'utilisateur dans la table users
-        $queryUpdateFirstLogin = $con->prepare("UPDATE Patient SET first_login = 1 WHERE NumSecu = ?");
-        $queryUpdateFirstLogin->bind_param('s', $_POST['numSecu']);
-        $queryUpdateFirstLogin->execute();
-
+        
         $con->commit();
         
         header('Location: Authentification.php');
@@ -59,58 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
 if ($message) {
     echo "<div class='error'>$message</div>";
 }
-?>
-    <?php
-
-if (isset($_POST['btn'])){
-    envoiMail($_POST['email'], $_POST['prenom']);
-    header("location: Authentification.php");
- }//if
-
-function envoiMail($destinationAddress, $destinationName){   
-    require "PHPMailer-master/src/PHPMailer.php"; 
-    require "PHPMailer-master/src/SMTP.php"; 
-    require 'PHPMailer-master/src/Exception.php'; 
-    $mail = new PHPMailer\PHPMailer\PHPMailer(true);//true:enables exceptions
-    try {
-        $mail->SMTPDebug = 2; //0,1,2: chế độ debug. khi chạy ngon thì chỉnh lại 0 nhé
-        $mail->isSMTP();  
-        $mail->CharSet  = "utf-8";
-        $mail->Host = 'smtp.gmail.com';  //SMTP servers
-        $mail->SMTPAuth = true; // Enable authentication
-        $mail->Username = 'thithuhien.dinh25@gmail.com'; // SMTP username
-        $mail->Password = 'eyxl gncd ennv ucmt';   // SMTP password
-        $mail->SMTPSecure = 'ssl';  // encryption TLS/SSL 
-        $mail->Port = 465;  // port to connect to                
-        $mail->setFrom('thithuhien.dinh25@gmail.com', 'DSI' ); 
-        $mail->addAddress($destinationAddress, $destinationName); //mail và tên người nhận  
-        $mail->isHTML(true);  // Set email format to HTML
-        $mail->Subject = 'Modification du mot de passe Medilab';
-        $mailContent = "
-        <p>Bonjour {$_POST['nom']} {$_POST['prenom']},<br></p>
-        <p>Vous venez d'être inscrit sur le site Medilab !!!<br></p>
-        <p>Le lien ci-dessous vous permet de vous connecter au site web :<br></p>
-        <p>Lien: <a href='https://episenfarge.ddns.net/test/Cabinet/Authentification.php'>https://episenfarge.ddns.net/test/Cabinet/Authentification.php</a><br></p>
-        <p>Votre identifiant : {$_POST['numSecu']}<br></p>
-        <p>Votre mot de passe provisoire : {$_POST['password']}<br></p>
-        <p>Après votre connexion, veuillez vous rendre dans l'onglet 'Modification de mot de passe' pour procéder au changement de mot de passe.<br></p>
-        <p>Bien cordialement,<br></p>
-        <p>DSI<br></p>
-        "; 
-        $mail->Body = $mailContent;
-        $mail->smtpConnect( array(
-            "ssl" => array(
-                "verify_peer" => false,
-                "verify_peer_name" => false,
-                "allow_self_signed" => true
-            )
-        ));
-        $mail->send();
-        echo "L'email a été envoyé";
-    } catch (Exception $e) {
-        echo "L'email ne peut pas être envoyé. Erreur : ", $mail->ErrorInfo;
-    }
- }//function envoiMail
 ?>
 
 <!DOCTYPE html>
