@@ -34,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
         }
 
         $_SESSION['userId'] = $con->insert_id;
-        $_SESSION['fonction'] = "Secretaire";
         
         $con->commit();
         
