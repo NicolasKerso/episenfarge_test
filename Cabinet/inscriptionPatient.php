@@ -34,10 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
         }
 
         $_SESSION['userId'] = $con->insert_id;
+        $_SESSION['fonction'] = $_POST['fonction'];
         
         $con->commit();
         
-        header('Location: index2.php');
+        header('Location: Authentification.php');
         exit();
 
     } catch (Exception $e) {
