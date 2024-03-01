@@ -236,7 +236,7 @@ function envoiMail($destinationAddress, $destinationName){
     </style>
 </head>
 <body>
-<form method="POST" action="process_inscription.php">
+<form method="POST" action="index2.php">
     <h2>INSCRIPTION</h2>
     <label>Fonction : Patient</label>
     <select name="fonction" id="fonction" required>
