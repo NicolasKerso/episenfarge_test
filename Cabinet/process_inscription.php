@@ -8,14 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
     $con->begin_transaction();
 
     try {
-        $requiredFields = $_POST['fonction'] == "Patient" ? 
-            ['numSecu', 'nom', 'prenom', 'dateNaissance', 'telephone', 'email', 'password', 'confirmPassword'] : 
-            ['numSecu', 'nom', 'prenom', 'dateNaissance', 'telephone', 'email', 'password', 'confirmPassword'];        
-        foreach ($requiredFields as $field) {
-            if (!isset($_POST[$field]) || empty($_POST[$field])) {
-                throw new Exception("Le champ $field est requis.");
-            }
-        }
 
         if ($_POST['fonction'] == "Patient" && $_POST['password'] !== $_POST['confirmPassword']) {
             throw new Exception("Les mots de passe ne correspondent pas.");
