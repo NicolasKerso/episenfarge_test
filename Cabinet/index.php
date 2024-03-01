@@ -1,6 +1,6 @@
 <?php session_start();
 if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Patient'){ 
-	$numSecu = $_SESSION['numSecu'];?>
+	$numSecu = $_SESSION['id_user'];?>
 <!doctype html>
 <html lang="en">
  
