@@ -28,24 +28,25 @@ if(isset($_POST['password']) and isset($_POST['username']))
             header('Location: changePW.php');
             exit;
         }
+        else {
 
-
-        switch ($_SESSION['Fonction']) {
-            case 'Patient':
-                $_SESSION['id_user']=$rowAuh['NumSecu'];
-                header('Location: index.php');
-                exit;
-            case 'Medecin':
-                $_SESSION['id_user']=$rowAuh['NumCPS'];
-                header('Location: index1.php');
-                exit;
-            case 'Secretaire':
-                $_SESSION['id_user']=$rowAuh['NumSpé'];
-                header('Location: index2.php');
-                exit;
-            default:
-                $message = "Fonction invalide";
-                break;
+            switch ($_SESSION['Fonction']) {
+                case 'Patient':
+                    $_SESSION['id_user']=$rowAuh['NumSecu'];
+                    header('Location: index.php');
+                    exit;
+                case 'Medecin':
+                    $_SESSION['id_user']=$rowAuh['NumCPS'];
+                    header('Location: index1.php');
+                    exit;
+                case 'Secretaire':
+                    $_SESSION['id_user']=$rowAuh['NumSpé'];
+                    header('Location: index2.php');
+                    exit;
+                default:
+                    $message = "Fonction invalide";
+                    break;
+            }
         }
 
 
