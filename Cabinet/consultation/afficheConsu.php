@@ -25,7 +25,7 @@
 
 
 include "../connexion.php";
-$queryC=" SELECT CIN,patient.Nom_Pat,patient.Prenom_Pat, consultation.Id_con,patient.Id_Pat,poids,Prix,Observation,DATE_FORMAT(Date_Cons, '%d/%m/%Y') as Date_Cons,`Type_Cons` FROM `patient` 
+$queryC=" SELECT NumSecu,Nom_Pat,Prenom_Pat,numerobracelet FROM `patient` 
 left join consultation on consultation.Id_pat=patient.Id_Pat where 1=1
   ";
 if(isset($_GET['Cin_Con']) and $_GET['Cin_Con']!="")
