@@ -8,10 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
     $con->begin_transaction();
 
     try {
-        $requiredFields = $_POST['fonction'] == "Medecin" ? 
-            ['numCPS', 'nomMedecin', 'prenomMedecin', 'dateNaissanceMedecin', 'sexeMedecin', 'adresseMedecin', 'codePostalMedecin', 'villeMedecin', 'telephoneMedecin', 'emailMedecin', 'passwordMedecin', 'confirmPasswordMedecin'] : 
-            ['numCPS', 'nomMedecin', 'prenomMedecin', 'dateNaissanceMedecin', 'sexeMedecin', 'adresseMedecin', 'codePostalMedecin', 'villeMedecin', 'telephoneMedecin', 'emailMedecin', 'passwordMedecin', 'confirmPasswordMedecin'];
-        
+        $requiredFields = ['numCPS', 'nom', 'prenom', 'dateNaissance', 'sexe', 'adresse', 'codePostal', 'ville', 'telephone', 'email', 'password', 'confirmPassword'];        
         foreach ($requiredFields as $field) {
             if (!isset($_POST[$field]) || empty($_POST[$field])) {
                 throw new Exception("Le champ $field est requis.");
@@ -250,8 +247,8 @@ function envoiMail($destinationAddress, $destinationName){
     <!-- Champs spécifiques pour les patients -->
     <div id="fieldsPatient" style="display: block;">
         <input type="text" placeholder="Numéro de CPS" name="numCPS" required>
-        <input type="text" placeholder="Nom" name="nomMedecin" required>
-        <input type="text" placeholder="Prénom" name="prenomMedecin" required>
+        <input type="text" placeholder="Nom" name="nom" required>
+        <input type="text" placeholder="Prénom" name="prenom" required>
         <label for="date" class="small-input">Date de naissance:</label>
         <input type="date" placeholder="Date de naissance" name="dateNaissance" required class="small-input">
         <label for="Sexe" class="small-input">Sexe:</label>
@@ -259,13 +256,13 @@ function envoiMail($destinationAddress, $destinationName){
             <option value="M">Homme</option>
             <option value="F">Femme</option>
         </select>
-        <input type="text" placeholder="Adresse" name="adresseMedecin" >
-        <input type="text" placeholder="Code Postal" name="codePostalMedecin" >
-        <input type="text" placeholder="Ville" name="villeMedecin" >
-        <input type="tel" placeholder="Téléphone" name="telephoneMedecin" required>
-        <input type="email" placeholder="Adresse e-mail" name="emailMedecin" required>
-        <input type="password" placeholder="Mot de passe" name="passwordMedecin" required>
-        <input type="password" placeholder="Confirmation du mot de passe" name="confirmPasswordMedecin" required>
+        <input type="text" placeholder="Adresse" name="adresse" >
+        <input type="text" placeholder="Code Postal" name="codePostal" >
+        <input type="text" placeholder="Ville" name="ville" >
+        <input type="tel" placeholder="Téléphone" name="telephone" required>
+        <input type="email" placeholder="Adresse e-mail" name="email" required>
+        <input type="password" placeholder="Mot de passe" name="password" required>
+        <input type="password" placeholder="Confirmation du mot de passe" name="confirmPasswordM" required>
     </div>
     <div>
         <input type="submit" value="S'inscrire"/>
