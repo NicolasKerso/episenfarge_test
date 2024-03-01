@@ -42,9 +42,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
 
 
         $userId = $con->insert_id;
-        
-        $queryUpdateFirstLogin = $con->prepare("UPDATE patient SET first_login = 1 WHERE NumSecu = ?");
-        $queryUpdateFirstLogin->bind_param('s', $_POST['numSecu']);
+        if ($_POST['fonction'] == "Patient") {
+            $queryUpdateFirstLogin = $con->prepare("UPDATE patient SET first_login = 1 WHERE NumSecu = ?");
+            $queryUpdateFirstLogin->bind_param('s', $_POST['numSecu']);
+        }
+        if ($_POST['fonction'] == "Medecin") {
+            $queryUpdateFirstLogin = $con->prepare("UPDATE medecin SET first_login = 1 WHERE NumSecu = ?");
+            $queryUpdateFirstLogin->bind_param('s', $_POST['numCPS']);
+        }
         $queryUpdateFirstLogin->execute();
         $con->commit();
         
@@ -101,7 +106,7 @@ function envoiMail($destinationAddress, $destinationName){
         <p>Vous venez d'être inscrit sur le site Medilab !!!<br></p>
         <p>Le lien ci-dessous vous permet de vous connecter au site web :<br></p>
         <p>Lien: <a href='https://episenfarge.ddns.net/test/Cabinet/Authentification.php'>https://episenfarge.ddns.net/test/Cabinet/Authentification.php</a><br></p>
-        <p>Votre identifiant : {$_POST['numSecu']}<br></p>
+        <p>Votre identifiant : {$_POST['numSecu']} {$_POST['numCPS']}<br></p>
         <p>Votre mot de passe provisoire : {$_POST['password']}<br></p>
         <p>Après votre connexion, veuillez vous rendre dans l'onglet 'Modification de mot de passe' pour procéder au changement de mot de passe.<br></p>
         <p>Bien cordialement,<br></p>
