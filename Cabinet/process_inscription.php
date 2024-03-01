@@ -65,7 +65,11 @@ if ($message) {
 ?>
 
 <?php
-
+if ($_POST['fonction'] == "Patient"){
+    $Num={$_POST['numSecu']}
+}else{
+    $Num={$_POST['numCPS']}
+}
 // if (isset($_POST['btn'])){
 //     envoiMail($_POST['email'], $_POST['prenom']);
 //     header("location:Authentification.php");
@@ -98,7 +102,7 @@ function envoiMail($destinationAddress, $destinationName){
         <p>Vous venez d'être inscrit sur le site Medilab !!!<br></p>
         <p>Le lien ci-dessous vous permet de vous connecter au site web :<br></p>
         <p>Lien: <a href='https://episenfarge.ddns.net/test/Cabinet/Authentification.php'>https://episenfarge.ddns.net/test/Cabinet/Authentification.php</a><br></p>
-        <p>Votre identifiant : <?php if ($_POST['fonction'] == "Patient") {{$_POST['numSecu']}} else {{$_POST['numCPS']}} ?><br></p>
+        <p>Votre identifiant : {$Num}<br></p>
         <p>Votre mot de passe provisoire : {$_POST['password']}<br></p>
         <p>Après votre connexion, veuillez vous rendre dans l'onglet 'Modification de mot de passe' pour procéder au changement de mot de passe.<br></p>
         <p>Bien cordialement,<br></p>
