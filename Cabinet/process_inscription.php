@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
 
         $_SESSION['userId'] = $userId;
         $_SESSION['fonction'] = $_POST['fonction'];
-        header('Location: /Cabinet/Authentification.php');
+        header('Location: Authentification.php');
         exit();
 
     } catch (Exception $e) {
