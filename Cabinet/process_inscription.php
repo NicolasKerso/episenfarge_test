@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
         $_SESSION['userId'] = $userId;
         $_SESSION['fonction'] = "Secretaire";
         //header('Location: index2.php');
-        exit();
+        //exit();
 
     } catch (Exception $e) {
 
