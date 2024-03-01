@@ -66,9 +66,9 @@ if ($message) {
 
 <?php
 if ($_POST['fonction'] == "Patient"){
-    $Num={$_POST['numSecu']}
+    $Num=$_POST['numSecu']
 }else{
-    $Num={$_POST['numCPS']}
+    $Num=$_POST['numCPS']
 }
 // if (isset($_POST['btn'])){
 //     envoiMail($_POST['email'], $_POST['prenom']);
