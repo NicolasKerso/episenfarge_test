@@ -98,7 +98,7 @@ function envoiMail($destinationAddress, $destinationName){
         $mail->isHTML(true);  // Set email format to HTML
         $mail->Subject = 'Modification du mot de passe Medilab';
         $mailContent = "
-        <p>Bonjour {$_POST['nom']} {$_POST['prenom']},<br></p>
+        <p>Bonjour,<br></p>
         <p>Vous venez d'être inscrit sur le site Medilab !!!<br></p>
         <p>Le lien ci-dessous vous permet de vous connecter au site web :<br></p>
         <p>Lien: <a href='https://episenfarge.ddns.net/test/Cabinet/Authentification.php'>https://episenfarge.ddns.net/test/Cabinet/Authentification.php</a><br></p>
