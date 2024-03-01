@@ -5,7 +5,6 @@ if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Secretaire'){;?>
 
     <head>
 
-
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -84,49 +83,10 @@ if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Secretaire'){;?>
                             <li class="nav-item">
                                 <a class="nav-link" href="#" data-toggle="collapse"
                                    onclick="functionGetAllConsultation();"
-                                   aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i> Consultations &
-                                    Contrôle </a>
+                                   aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i> Patients </a>
 
                             </li>
 
-
-
-                            <li class="nav-item ">
-                                <a class="nav-link active"  href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1">
-                                    <i class="fa fa-fw fa-user-circle"></i>Dossiers médicaux des patients </a>
-                                <div id="submenu-1" class="collapse submenu" style="">
-                                    <ul class="nav flex-column">
-
-                                        <li class="nav-item">
-                                            <a class="nav-link" onclick="getPatient();" href="#">Patient</a>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a class="nav-link" onclick="getHistoPat();" href="#">Historique </a>
-                                        </li>
-
-
-
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse"
-                                   onclick="functionGetAllConsultation();"
-                                   aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i> Consultations &
-                                    Contrôle </a>
-
-                            </li>
-
-
-
-                            <li class="nav-divider">
-                                <!-- Features-->
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="getordonnance();" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-fw fa-file"></i> Ordonnances</a>
-
-                            </li>
 
 
                             <li class="nav-item">
@@ -175,7 +135,7 @@ if(isset($_SESSION['id_user']) && $_SESSION['Fonction'] === 'Secretaire'){;?>
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ChanegPass">Chanegement de mot de passe </h5>
+                    <h5 class="modal-title" id="ChanegPass">Changement de mot de passe </h5>
                     <a href="#" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </a>
