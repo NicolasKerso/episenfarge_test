@@ -26,7 +26,7 @@
 
 include "../connexion.php";
 $queryC=" SELECT NumSecu,Nom_Pat,Prenom_Pat,numerobracelet FROM `patient` 
-left join consultation on consultation.Id_pat=patient.Id_Pat where 1=1
+left join consultation on consultation.Id_NumSecu=patient.NumSecu where 1=1
   ";
 if(isset($_GET['Cin_Con']) and $_GET['Cin_Con']!="")
 {
