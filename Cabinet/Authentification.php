@@ -10,11 +10,11 @@ if(isset($_POST['password']) and isset($_POST['username']))
      WHERE NumSpé = '" . htmlspecialchars(str_replace("'", "`", $_POST['username'])) . "' ";
     }
     if ($_POST['fonction']=="Patient"){
-        $queryAuth ="SELECT `NumSecu`,`Nom_Pat`,`Password` FROM `patient`
+        $queryAuth ="SELECT `NumSecu`,`Nom_Pat`,`Password`,`first_login` FROM `patient`
      WHERE NumSecu = '" . htmlspecialchars(str_replace("'", "`", $_POST['username'])) . "' ";
     }
     if ($_POST['fonction']=="Medecin"){
-        $queryAuth ="SELECT `NumCPS`,`Nom_Med`,`Password` FROM `medecin`
+        $queryAuth ="SELECT `NumCPS`,`Nom_Med`,`Password`,`first_login` FROM `medecin`
      WHERE NumCPS = '" . htmlspecialchars(str_replace("'", "`", $_POST['username'])) . "' ";
     }
     $resultAth=mysqli_query($con,$queryAuth);
@@ -22,7 +22,7 @@ if(isset($_POST['password']) and isset($_POST['username']))
 
     if ($rowAuh && password_verify($_POST['password'], $rowAuh['Password'])) {
         
-        $_SESSION['Username']=$rowAuh['UserName'];
+        $_SESSION['Username']=$rowAuh['NumSecu'];
         $_SESSION['Fonction']=$_POST['fonction']; // Ici on ajoute la fonction à la session
         if ($rowAuh['first_login'] == 1) {
             header('Location: changePW.php');
