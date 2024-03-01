@@ -23,32 +23,30 @@ if(isset($_POST['password']) and isset($_POST['username']))
     if ($rowAuh && password_verify($_POST['password'], $rowAuh['Password'])) {
         
         $_SESSION['Fonction']=$_POST['fonction']; // Ici on ajoute la fonction à la session
-        else {
-            switch ($_SESSION['Fonction']) {
-                case 'Patient':
-                    $_SESSION['id_user']=$rowAuh['NumSecu'];
-                    if ($rowAuh['first_login'] == 1) {
-                        header('Location: changePW.php');
-                        exit;
-                    }
-                    header('Location: index.php');
+        switch ($_SESSION['Fonction']) {
+            case 'Patient':
+                $_SESSION['id_user']=$rowAuh['NumSecu'];
+                if ($rowAuh['first_login'] == 1) {
+                    header('Location: changePW.php');
                     exit;
-                case 'Medecin':
-                    $_SESSION['id_user']=$rowAuh['NumCPS'];
-                    if ($rowAuh['first_login'] == 1) {
-                        header('Location: changePW.php');
-                        exit;
-                    }
-                    header('Location: index1.php');
+                }
+                header('Location: index.php');
+                exit;
+            case 'Medecin':
+                $_SESSION['id_user']=$rowAuh['NumCPS'];
+                if ($rowAuh['first_login'] == 1) {
+                    header('Location: changePW.php');
                     exit;
-                case 'Secretaire':
-                    $_SESSION['id_user']=$rowAuh['NumSpé'];
-                    header('Location: index2.php');
-                    exit;
-                default:
-                    $message = "Fonction invalide";
-                    break;
-            }
+                }
+                header('Location: index1.php');
+                exit;
+            case 'Secretaire':
+                $_SESSION['id_user']=$rowAuh['NumSpé'];
+                header('Location: index2.php');
+                exit;
+            default:
+                $message = "Fonction invalide";
+                break;
         }
 
 
