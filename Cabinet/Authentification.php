@@ -32,6 +32,10 @@ if(isset($_POST['password']) and isset($_POST['username']))
             switch ($_SESSION['Fonction']) {
                 case 'Patient':
                     $_SESSION['id_user']=$rowAuh['NumSecu'];
+                    if ($rowAuh['first_login'] == 1) {
+                        header('Location: changePW.php');
+                        exit;
+                    }
                     header('Location: index.php');
                     exit;
                 case 'Medecin':
