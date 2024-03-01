@@ -25,7 +25,7 @@ if(isset($_POST['password']) and isset($_POST['username']))
         $_SESSION['Username']=$rowAuh['UserName'];
         $_SESSION['Fonction']=$_POST['fonction']; // Ici on ajoute la fonction à la session
         if ($rowAuh['first_login'] == 1) {
-            header('Location: /Cabinet/changePW.php');
+            header('Location: changePW.php');
             exit;
         }
 
