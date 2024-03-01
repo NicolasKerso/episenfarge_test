@@ -8,6 +8,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
     $con->begin_transaction();
 
     try {
+        $requiredFields = $_POST['fonction'] == "Patient" ? 
+            ['numSecu', 'nom', 'prenom', 'dateNaissance', 'telephone', 'email', 'password', 'confirmPassword'] : 
+            ['numSecu', 'nom', 'prenom', 'dateNaissance', 'telephone', 'email', 'password', 'confirmPassword'];        
+        foreach ($requiredFields as $field) {
+            if (!isset($_POST[$field]) || empty($_POST[$field])) {
+                throw new Exception("Le champ $field est requis.");
+            }
+        }
 
         if ($_POST['fonction'] == "Patient" && $_POST['password'] !== $_POST['confirmPassword']) {
             throw new Exception("Les mots de passe ne correspondent pas.");
@@ -18,13 +26,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
             $stmt->bind_param("ssssssssssss", $_POST['numSecu'], $_POST['nom'], $_POST['prenom'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['adresse'], $_POST['codePostal'], $_POST['ville'], $_POST['telephone'], $_POST['email'], $hashedPassword, $_POST['numerobracelet']);
         }
         
-        if ($_POST['fonction'] == "Medecin" && $_POST['password'] !== $_POST['confirmPassword']) {
+        if ($_POST['fonction'] == "Medecin" && $_POST['passwordMedecin'] !== $_POST['confirmPasswordMedecin']) {
             throw new Exception("Les mots de passe ne correspondent pas.");
         } 
         if ($_POST['fonction'] == "Medecin") {
-            $hashedPasswordMedecin = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $stmt = $con->prepare("INSERT INTO medecin (NumCPS, Nom_Med, Prenom_Med, DateNaissance, Sexe, Adresse, CodePostal, Ville, Telephone, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssssssssss", $_POST['numCPS'], $_POST['nom'], $_POST['prenom'], $_POST['dateNaissance'], $_POST['sexe'], $_POST['adresse'], $_POST['codePostal'], $_POST['ville'], $_POST['telephone'], $_POST['email'], $hashedPassword);
+            $hashedPasswordMedecin = password_hash($_POST['passwordMedecin'], PASSWORD_DEFAULT);
+            $stmt = $con->prepare("INSERT INTO medecin (NumCPS, Nom, Prenom, DateNaissance, Sexe, Adresse, CodePostal, Ville, Telephone, Email, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssssssssss", $_POST['numCPS'], $_POST['nomMedecin'], $_POST['prenomMedecin'], $_POST['dateNaissanceMedecin'], $_POST['sexeMedecin'], $_POST['adresseMedecin'], $_POST['codePostalMedecin'], $_POST['villeMedecin'], $_POST['telephoneMedecin'], $_POST['emailMedecin'], $hashedPasswordMedecin);
         }
       
         $stmt->execute();
@@ -34,14 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
 
 
         $userId = $con->insert_id;
-        if ($_POST['fonction'] == "Patient") {
-            $queryUpdateFirstLogin = $con->prepare("UPDATE patient SET first_login = 1 WHERE NumSecu = ?");
-            $queryUpdateFirstLogin->bind_param('s', $_POST['numSecu']);
-        }
-        if ($_POST['fonction'] == "Medecin") {
-            $queryUpdateFirstLogin = $con->prepare("UPDATE medecin SET first_login = 1 WHERE NumSecu = ?");
-            $queryUpdateFirstLogin->bind_param('s', $_POST['numCPS']);
-        }
+        
+        $queryUpdateFirstLogin = $con->prepare("UPDATE patient SET first_login = 1 WHERE NumSecu = ?");
+        $queryUpdateFirstLogin->bind_param('s', $_POST['numSecu']);
         $queryUpdateFirstLogin->execute();
         $con->commit();
         
@@ -65,19 +68,13 @@ if ($message) {
 ?>
 
 <?php
-if ($_POST['fonction'] == "Patient"){
-    $Num=$_POST['numSecu'];
-    
-}else{
-    $Num=$_POST['numCPS'];
-}
-echo $Num
+
 // if (isset($_POST['btn'])){
 //     envoiMail($_POST['email'], $_POST['prenom']);
 //     header("location:Authentification.php");
 //  }//if
 
-envoiMail($_POST['Email'], $_POST['nom']);
+envoiMail($_POST['email'], $_POST['prenom']);
 //header("location:Authentification.php");
 
 function envoiMail($destinationAddress, $destinationName){   
@@ -100,11 +97,11 @@ function envoiMail($destinationAddress, $destinationName){
         $mail->isHTML(true);  // Set email format to HTML
         $mail->Subject = 'Modification du mot de passe Medilab';
         $mailContent = "
-        <p>Bonjour,<br></p>
+        <p>Bonjour {$_POST['nom']} {$_POST['prenom']},<br></p>
         <p>Vous venez d'être inscrit sur le site Medilab !!!<br></p>
         <p>Le lien ci-dessous vous permet de vous connecter au site web :<br></p>
         <p>Lien: <a href='https://episenfarge.ddns.net/test/Cabinet/Authentification.php'>https://episenfarge.ddns.net/test/Cabinet/Authentification.php</a><br></p>
-        <p>Votre identifiant : " $Num " <br></p>
+        <p>Votre identifiant : {$_POST['numSecu']}<br></p>
         <p>Votre mot de passe provisoire : {$_POST['password']}<br></p>
         <p>Après votre connexion, veuillez vous rendre dans l'onglet 'Modification de mot de passe' pour procéder au changement de mot de passe.<br></p>
         <p>Bien cordialement,<br></p>
