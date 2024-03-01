@@ -13,9 +13,9 @@ if (isset($_POST['btn']) == true) {
 
     $conn = new PDO("mysql:host=localhost;dbname=u677866956_test;charset=utf8", "u677866956_compte_test", ";-k33vLYw:H9");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO:: ERRMODE_EXCEPTION);
-    $sql ="SELECT * FROM users WHERE UserName = ?";
+    $sql ="SELECT * FROM users WHERE NumSecu = ?";
     $stmt = $conn->prepare($sql); 
-    $stmt->execute([$userName]);
+    $stmt->execute([$NumSecu]);
     $user = $stmt->fetch();
 
     if (!$user || !password_verify($ancienpassword, $user['Password'])) {
