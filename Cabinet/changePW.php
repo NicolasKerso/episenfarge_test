@@ -1,10 +1,10 @@
 <?php
 if (session_id() == '') session_start(); 
-if (isset($_SESSION['Username']) == false) {
-    header("location:/Cabinet/Authentification.php");
+if (isset($_SESSION['NumSecu']) == false) {
+    header("location: Authentification.php");
     exit();
 } 
-$userName = $_SESSION['Username'];
+$userName = $_SESSION['NumSecu'];
 $erreur = "";
 if (isset($_POST['btn']) == true) {
     $ancienpassword = $_POST['ancienpassword'];
@@ -13,9 +13,9 @@ if (isset($_POST['btn']) == true) {
 
     $conn = new PDO("mysql:host=localhost;dbname=u677866956_test;charset=utf8", "u677866956_compte_test", ";-k33vLYw:H9");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO:: ERRMODE_EXCEPTION);
-    $sql ="SELECT * FROM users WHERE NumSecu = ?";
+    $sql ="SELECT * FROM patient WHERE NumSecu = ?";
     $stmt = $conn->prepare($sql); 
-    $stmt->execute([$NumSecu]);
+    $stmt->execute([$userName]);
     $user = $stmt->fetch();
 
     if (!$user || !password_verify($ancienpassword, $user['Password'])) {
@@ -28,11 +28,11 @@ if (isset($_POST['btn']) == true) {
     if ($nouveaupassword != $confirnouveaupassword) {$erreur.="La confirmation du nouveau mot de passe n'est pas identique<br>"; }
     if ($erreur == "") {
         $nouveaupasswordHash = password_hash($nouveaupassword, PASSWORD_DEFAULT);
-        $sql = "UPDATE users SET Password = ?, first_login = 0 WHERE UserName = ?";
+        $sql = "UPDATE patient SET Password = ?, first_login = 0 WHERE NumSecu = ?";
         $stmt = $conn->prepare($sql); 
         $stmt->execute([$nouveaupasswordHash, $userName]);
         echo "Mot de passe mis à jour";
-        header('Location: /Cabinet/index1.php');
+        header('Location: index.php');
         exit();
     }
 }
