@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
 
         $_SESSION['userId'] = $userId;
         $_SESSION['fonction'] = "Secretaire";
-        //header('Location: index2.php');
+        header('Location: index2.php');
         //exit();
 
     } catch (Exception $e) {
@@ -83,7 +83,7 @@ function envoiMail($destinationAddress, $destinationName){
     require 'PHPMailer-master/src/Exception.php'; 
     $mail = new PHPMailer\PHPMailer\PHPMailer(true);//true:enables exceptions
     try {
-        $mail->SMTPDebug = 2; //0,1,2: chế độ debug. khi chạy ngon thì chỉnh lại 0 nhé
+        $mail->SMTPDebug = 0; //0,1,2: chế độ debug. khi chạy ngon thì chỉnh lại 0 nhé
         $mail->isSMTP();  
         $mail->CharSet  = "utf-8";
         $mail->Host = 'smtp.gmail.com';  //SMTP servers
