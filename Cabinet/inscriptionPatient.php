@@ -16,7 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
                 throw new Exception("Le champ $field est requis.");
             }
         }
-
+        if ($_POST['fonction'] == "Patient" && strlen($_POST['numSecu']) != 13) {
+            throw new Exception("Numéro de sécurité sociale invalide. Il doit contenir exactement 13 chiffres.");
+        }
+        
         if ($_POST['fonction'] == "Patient" && $_POST['password'] !== $_POST['confirmPassword']) {
             throw new Exception("Les mots de passe ne correspondent pas.");
         } 
