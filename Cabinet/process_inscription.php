@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fonction'])) {
 
         $userId = $con->insert_id;
         
-        $queryUpdateFirstLogin = $con->prepare("UPDATE Patient SET first_login = 1 WHERE NumSecu = ?");
+        $queryUpdateFirstLogin = $con->prepare("UPDATE patient SET first_login = 1 WHERE NumSecu = ?");
         $queryUpdateFirstLogin->bind_param('s', $_POST['numSecu']);
         $queryUpdateFirstLogin->execute();
         $con->commit();
