@@ -22,12 +22,7 @@ if(isset($_POST['password']) and isset($_POST['username']))
 
     if ($rowAuh && password_verify($_POST['password'], $rowAuh['Password'])) {
         
-        $_SESSION['Username']=$rowAuh['NumSecu'];
         $_SESSION['Fonction']=$_POST['fonction']; // Ici on ajoute la fonction à la session
-        if ($rowAuh['first_login'] == 1) {
-            header('Location: changePW.php');
-            exit;
-        }
         else {
             switch ($_SESSION['Fonction']) {
                 case 'Patient':
@@ -40,6 +35,10 @@ if(isset($_POST['password']) and isset($_POST['username']))
                     exit;
                 case 'Medecin':
                     $_SESSION['id_user']=$rowAuh['NumCPS'];
+                    if ($rowAuh['first_login'] == 1) {
+                        header('Location: changePW.php');
+                        exit;
+                    }
                     header('Location: index1.php');
                     exit;
                 case 'Secretaire':
